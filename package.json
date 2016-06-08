@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "ejs": "^2.3.4",
+    "email-templates": "^2.3.0",
+    "fs": "0.0.2",
     "jwt-simple": "^0.5.0",
     "mongoose": "^4.4.20",
     "nodemailer": "^0.7.1",

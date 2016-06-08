@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>东北大学秦皇岛分校</title>
+ <style>
+  .top{
+   height:280px ;
+   width: 1200px;
+   margin: 0 auto;
+  }
+  .top .logo{
+   height: 160px;
+   width: 110px;
+   margin-top:70px;
+   margin-left: 545px;
+  }
+  .middle{
+   height: 300px;
+   width: 1200px;
+   margin: 0 auto;
+
+  }
+  .middle .user{
+   height: 30%;
+   width: 100%;
+   text-align: center;
+  }
+  .middle .user h2{
+   display:inline-block;
+   margin-top: 20px;
+   font-size: 25px;
+
+  }
+  .middle .user span{
+   margin-top: 10px;
+   display: block;
+   font-size: 20px;
+   color: #1AB394;
+  }
+  .middle .link {
+   height: 70%;
+   width: 100%;
+  }
+
+  .middle .link  span{
+   font-size: 16px;
+   margin-top: 35px;
+   width: 1200px;
+   text-align: center;
+   display: block;
+   color: #666666;
+  }
+  .middle .link div{
+   width: 60%;
+   margin: 30px auto 0;
+   height: 100px;
+   word-break: break-all;
+   color: #1AB394;
+  }
+  .middle .link div p{
+   width: 100%;
+   font-size: 16px;
+   height: 22px;
+   line-height: 22px;
+   text-align: center;
+  }
+  .middle .link div p a{
+   color: #1AB394;
+  }
+  .footer{
+   height: 80px;
+   width: 1200px;
+   margin: 0 auto;
+   border-top: 1px solid grey;
+  }
+  .footer span{
+   display: block;
+   font-size: 16px;
+   color: grey;
+   margin-top: 45px;
+  }
+ </style>
+</head>
+<body>
+<div class="top">
+ <img class="logo" src="./images/logo.jpg">
+</div>
+<div class="middle">
+ <div class="user">
+  <h2>Hi</h2>
+  <span>1621532838@qq.com</span>
+ </div>
+ <div class="link">
+  <span>欢迎使用东北大学秦皇岛分校大学生就业择业平台，点击下面链接验证邮箱：</span>
+  <div><p><a href=<%=authLink%>><%=authLink%></a></p></div>
+ </div>
+</div>
+<div class="footer">
+ <span>©2016东北大学秦皇岛分校数学与统计学院就业择业中心</span>
+</div>
+</body>
+</html>
