@@ -5,16 +5,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    email: String,
-    phone: String,
-    name: String,
-    role: String,
-    password: String,
-    class: String,
-    major: String,
-    academy: String,
-    QQNumber: String,
-    wordNumber: String,
-    StudentId: String
+    id:Number,
+    email:{
+        type:'String',
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    role:{
+        type:String,
+        default:'学生'
+    },
+    isActive:{
+        type:Boolean,
+        default:false
+    }
 });
+
+
+mongoose.model('Users',UserSchema);
 
