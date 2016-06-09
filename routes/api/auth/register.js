@@ -2,49 +2,49 @@
  * Created by qoder on 16/6/9.
  */
 const mongoose = require('mongoose');
-const uuid=require('uuid');
+const uuid = require('uuid');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
 const localhost = require('../../../config/localhost');
-const emailSender=require('../../../library/emailSender');
-const regHtml=require('../../../template/mailtpl');
-const unKnownError=require('../../../library/unknownError');
-const resHandler=require('../../../library/resHandler');
+const emailSender = require('../../../library/emailSender');
+const regHtml = require('../../../template/mailtpl');
+const unKnownError = require('../../../library/unknownError');
+const resHandler = require('../../../library/resHandler');
 
-function register(req,res,next) {
-    if (req.body.email&&req.body.password) {
+function register(req, res, next) {
+    if (req.body.email && req.body.password) {
         const email = req.body.email;
         Users.findOne({email: email}, function (err, user) {
             if (err) {
                 unKnownError(res);
             } else {
                 if (user) {
-                    resHandler(10008,res);
+                    resHandler(10008, res);
                 } else {
-                    req.body.id=uuid.v4();
+                    req.body.id = uuid.v1();
                     Users.create(req.body, function (err, users) {
-                        if(err){
+                        if (err) {
                             unKnownError(res);
-                        }else{
-                            const subject='东北大学秦皇岛分校数学与统计学院大学生就业择业平台';
-                            const html=regHtml.replace(/authLink/g,localhost+'/users/register/confirmmail?id='+req.body.id+'&email='+email+'&subject='+encodeURI(subject));
+                        } else {
+                            const subject = '东北大学秦皇岛分校数学与统计学院大学生就业择业平台';
+                            const html = regHtml.replace(/authLink/g, localhost + '/users/register/confirmmail?id=' + req.body.id + '&email=' + email + '&subject=' + encodeURI(subject));
                             const mailOptions = {
                                 from: '841599872@qq.com',
                                 to: email,
-                                subject:subject,
+                                subject: subject,
                                 text: '欢迎使用东北大学秦皇岛分校大学生就业择业平台',
                                 html: html
                             };
-                            emailSender(mailOptions,res);
+                            emailSender(mailOptions, res);
                         }
                     });
                 }
             }
         });
     } else {
-        resHandler(10001,res);
+        resHandler(10001, res);
     }
 }
 
 
-module.exports=register;
+module.exports = register;

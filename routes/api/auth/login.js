@@ -4,12 +4,12 @@
 /*登录*/
 const mongoose = require('mongoose');
 const moment = require('moment');
-const jwt = require('jwt-simple');
-const jwtTokenSecret=require('../../../config/id_rsa');
+const tokenCreator=require('../../../library/tokenCreator');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
 const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
+
 
 function login(req, res, next) {
     if (req.body.email && req.body.password) {
@@ -21,11 +21,7 @@ function login(req, res, next) {
                     if (user.isActive) {
                         const expires = moment().add(7,'days').valueOf();
                         const id=user.id;
-                        const token = jwt.encode({
-                            iss:id,
-                            exp: expires
-                        }, jwtTokenSecret);
-                        console.log(token);
+                        const token = tokenCreator(id,expires);
                         res.json({
                             code:10000,
                             data:{

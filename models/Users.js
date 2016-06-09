@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     isActive:{
         type:Boolean,
         default:false
+    },
+    resetPass:{
+        type:Boolean,
+        default:'true'
     }
 });
 

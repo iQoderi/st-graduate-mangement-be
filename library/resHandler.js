@@ -59,8 +59,11 @@ const resHandler = function (code, res) {
         case 10009:
             resJson(code,res,'用户没有激活');
             break;
-        case (10010):
+        case 10010:
             resJson(code,res,'账号密码错误');
+            break;
+        case 10011:
+            resJson(code,res,'账户不存在');
             break;
         default:
             resJson(-1,res,'未知错误');

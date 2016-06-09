@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>东北大学秦皇岛分校</title>
+    <link href="/stylesheets/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="top">
+    <img class="logo" src="/images/logo.jpg">
+</div>
+<div class="middle">
+    <div class="user">
+        <h2>Hi</h2>
+        <span><%= email %></span>
+    </div>
+    <div class="link">
+        <span>验证通过:<span id="time" style="display: inline">5</span>秒后返回重置密码页面,若不能返回,点击下方按钮直接返回</span></span>
+        <div><p><a id="goResetPass">返回重置密码页面</a></p></div>
+    </div>
+</div>
+<div class="footer">
+    <span>©2016东北大学秦皇岛分校数学与统计学院就业择业中心</span>
+</div>
+<div id="data" style="display: none"><%= id %></div>
+<script>
+    window.onload = function () {
+        var timer = null;
+        var count = 5;
+        var baseUrl = 'http://neuqst.qoder.cn';
+        var data = document.getElementById('data').innerHTML;
+        var targetUrl = baseUrl + '?id=' + data + '#/auth/login';
+        var time = document.getElementById('time');
+        var goResetPass = document.getElementById('goResetPass');
+        goResetPass.setAttribute('href', targetUrl);
+        timer = setInterval(function () {
+            time.innerText = count--;
+            if (count === 0) {
+                clearInterval(timer);
+                window.location.href = targetUrl;
+            }
+        }, 1000);
+
+        goResetPass.onclick = function () {
+            clearInterval(timer);
+            window.location.href = targetUrl;
+        }
+    };
+</script>
+</body>
+</html>
