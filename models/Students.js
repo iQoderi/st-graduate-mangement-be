@@ -17,5 +17,5 @@ const Student=new Schema({
     academy: String,
     QQNumber: String,
     wordNumber: String,
-    StudentId: String,
+    StudentId: String
 });
