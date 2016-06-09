@@ -22,4 +22,5 @@ function confirmEmail(req, res, next) {
     })
 }
 
+
 module.exports = confirmEmail;

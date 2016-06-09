@@ -19,7 +19,7 @@ function login(req, res, next) {
             } else {
                 if (user) {
                     if (user.isActive) {
-                        const expires = moment().add('days', 7).valueOf();
+                        const expires = moment().add(7,'days').valueOf();
                         const id=user.id;
                         const token = jwt.encode({
                             iss:id,
