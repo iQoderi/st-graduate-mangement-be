@@ -14,6 +14,7 @@ const  checkToken=require('../../library/checkToken');
 const  confirmResetPass=require('./auth/confirmResetPass');
 const  reSendEmail=require('./auth/reSendEmail');
 const  passNew=require('./auth/newPass');
+
 router.get('/register/confirmmail',confirmEmail);    //激活账号
 router.get('/resetPass/confirmmail',checkToken,confirmResetPass);   //确认重置密码邮件
 
