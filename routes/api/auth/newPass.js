@@ -43,5 +43,4 @@ function passNew(req, res, next) {
     }
 }
 
-
 module.exports = passNew;
