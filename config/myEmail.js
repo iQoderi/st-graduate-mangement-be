@@ -3,7 +3,7 @@
  */
 const  QQEmail={
     user:'841599872@qq.com',
-    pass:'ntjtzgbntbxzbdib'
+    pass:'bzzwjilthsycbdia'
 };
 
 module.exports=QQEmail;
