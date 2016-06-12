@@ -11,7 +11,8 @@ const users = require('./routes/api/auth');
 const  mongoose=require('mongoose');
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/nequst-graduate-mange');
+const host='192.168.16.55';
+mongoose.connect('mongodb://'+host+':27017/nequst-graduate-mange');
 
 // view engine setup
 app.set('views', path.join(__dirname,'views'));

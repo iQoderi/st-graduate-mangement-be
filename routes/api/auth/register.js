@@ -31,14 +31,13 @@ function register(req, res, next) {
                         text: '欢迎使用东北大学秦皇岛分校大学生就业择业平台',
                         html: html
                     };
-                    emailSender(mailOptions, res);
-                    if(res.email){
-                        Users.create(req.body, function (err, users) {
-                            if (err) {
-                                unKnownError(res);
-                            }
-                        });
-                    }
+                    Users.create(req.body, function (err, users) {
+                        if (err) {
+                            unKnownError(res);
+                        } else {
+                            emailSender(mailOptions, res);
+                        }
+                    });
                 }
             }
         });
