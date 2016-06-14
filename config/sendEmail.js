@@ -6,7 +6,7 @@ const EmailAuth=require('./myEmail');
 
 //开启一个SMTP连接池
 const  transporter=nodeEmailer.createTransport("SMTP",{
-    host:"smtp.qq.com",   //主机
+    host:"smtp.163.com",   //主机
     secureConnection:true,   //使用SSL,
     port:465,    //SMTP端口
     auth:EmailAuth

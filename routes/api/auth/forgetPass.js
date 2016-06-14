@@ -28,7 +28,7 @@ function forgetPass(req, res, next) {
                     const subject='东北大学秦皇岛分校数学与统计学院大学生就业择业平台';
                     const html=resetPassTpl.replace(/authLink/g,localhost+'/users/resetPass/confirmmail?Token='+token+'&email='+email+'&subject='+encodeURI(subject));
                     const mailOptions = {
-                        from: '841599872@qq.com',
+                        from: 'neuqstbysgl@163.com',
                         to: email,
                         subject:subject,
                         text: '欢迎使用东北大学秦皇岛分校大学生就业择业平台',

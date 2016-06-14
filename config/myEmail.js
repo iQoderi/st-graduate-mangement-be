@@ -2,8 +2,8 @@
  * Created by qoder on 16/6/8.
  */
 const  QQEmail={
-    user:'841599872@qq.com',
-    pass:'bzzwjilthsycbdia'
+    user:'neuqstbysgl@163.com',
+    pass:'neuqst1314'
 };
 
 module.exports=QQEmail;
