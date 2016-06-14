@@ -3,13 +3,15 @@
  */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const Students=require('./Students');
 const UserSchema = new Schema({
     id:{
-        type:'String'
+        type:'String',
+        index:true
     },
     email:{
         type:'String',
+        index:true,
         required:true
     },
     password:{
@@ -24,11 +26,13 @@ const UserSchema = new Schema({
         type:Boolean,
         default:false
     },
-    resetPass:{
+    isComleteMsg:{
         type:Boolean,
-        default:'true'
-    }
+        default:false
+    },
+    students:[Students]
 });
 
+// UserSchema.index({email:1,id:1});
 mongoose.model('Users',UserSchema);
 

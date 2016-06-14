@@ -15,8 +15,7 @@ function checkToken(req,res,next) {
         next();
     }
 
-   
-    var token=req.header['Token']||req.query.Token;
+    var token=req.headers['token']||req.query.Token;
     if(token){
         try {
             const decoded=jwt.decode(token,secretKey);
@@ -32,13 +31,13 @@ function checkToken(req,res,next) {
                             req.user=user;
                             next();
                         }else{
-                            unKnownError(res);
+                            resHandler(10006,res);
                         }
                     }
                 })
             }
         }catch (e){
-            unKnownError(res);
+            resHandler(10006,res);
         }
     }else{
         resHandler(10006,res);

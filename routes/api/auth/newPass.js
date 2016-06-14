@@ -21,7 +21,6 @@ function passNew(req, res, next) {
             } else {
                 console.log(user);
                 if (user.n === 1) {
-                    console.log(user);
                     res.json({
                         code: 10000,
                         data: {
