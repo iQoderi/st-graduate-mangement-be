@@ -27,7 +27,7 @@ const UserSchema = new Schema({
         type:Boolean,
         default:false
     },
-    isComleteMsg:{
+    isCompleteMsg:{
         type:Boolean,
         default:false
     },

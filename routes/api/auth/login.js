@@ -13,7 +13,7 @@ const resHandler = require('../../../library/resHandler');
 
 function login(req, res, next) {
     if (req.body.email && req.body.password) {
-        Users.findOne(req.body, function (err, user) {
+        Users.findOne(req.body).exec((err, user)=> {
             if (err) {
                 unKnownError(res);
             } else {
