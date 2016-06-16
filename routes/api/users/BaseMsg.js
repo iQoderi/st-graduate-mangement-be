@@ -13,7 +13,7 @@ function BaseMsg(req, res, next) {
     const condition={id:req.user.id};
     req.body.id=req.user.id;
     req.body.email=req.user.email;
-    const update={$set:{students:req.body,isComleteMsg:true}};
+    const update={$set:{students:req.body,isCompleteMsg:true}};
     Users.update(condition,update,function (err,update) {
         if(err){
             unKnownError(res);

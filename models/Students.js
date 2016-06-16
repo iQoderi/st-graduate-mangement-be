@@ -12,7 +12,7 @@ const Student=new Schema({
     },
     email:{
         type:String,
-        index:true
+        index:true,
     },
     phone: String,
     name: String,

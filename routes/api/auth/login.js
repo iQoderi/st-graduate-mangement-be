@@ -4,7 +4,7 @@
 /*登录*/
 const mongoose = require('mongoose');
 const moment = require('moment');
-const tokenCreator=require('../../../library/tokenCreator');
+const tokenCreator = require('../../../library/tokenCreator');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
 const unKnownError = require('../../../library/unknownError');
@@ -19,16 +19,26 @@ function login(req, res, next) {
             } else {
                 if (user) {
                     if (user.isActive) {
-                        const expires = moment().add(7,'days').valueOf();
-                        const id=user.id;
-                        const token = tokenCreator(id,expires);
-                        res.json({
-                            code:10000,
-                            data:{
-                                Msg:'登录成功',
-                                token:token
-                            }
-                        });
+                        const expires = moment().add(7, 'days').valueOf();
+                        const id = user.id;
+                        const token = tokenCreator(id, expires);
+                        if (user.isCompleteMsg) {
+                            res.json({
+                                code: 10000,
+                                data: {
+                                    Msg: '登录成功',
+                                    token: token
+                                }
+                            });
+                        } else {
+                            res.json({
+                                code: 90010,
+                                data: {
+                                    Msg: '登录成功,请完善信息',
+                                    token: token
+                                }
+                            });
+                        }
                     } else {
                         resHandler(10009, res);
                     }

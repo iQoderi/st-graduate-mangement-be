@@ -3,36 +3,38 @@
  */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Students=require('./Students');
+const Students = require('./Students');
+const teacher = require('./teachers');
 const UserSchema = new Schema({
-    id:{
-        type:'String',
-        index:true
+    id: {
+        type: 'String',
+        index: true
     },
-    email:{
-        type:'String',
-        index:true,
-        required:true
+    email: {
+        type: 'String',
+        index: true,
+        required: true
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+        type: String,
+        required: true
     },
-    role:{
-        type:String,
-        default:'学生'
+    role: {
+        type: String,
+        default: '学生'
     },
-    isActive:{
-        type:Boolean,
-        default:false
+    isActive: {
+        type: Boolean,
+        default: false
     },
-    isComleteMsg:{
-        type:Boolean,
-        default:false
+    isCompleteMsg: {
+        type: Boolean,
+        default: false
     },
-    students:[Students]
+    students: [Students],
+    teacher: [teacher]
 });
 
-// UserSchema.index({email:1,id:1});
-mongoose.model('Users',UserSchema);
+
+mongoose.model('Users', UserSchema);
 
