@@ -24,7 +24,11 @@ const teacher = new Schema({
     },
     academy: {
         type: String,
-        index: true
+        required: true
+    },
+    code: {
+        type: String,
+        required: true
     }
 });
 

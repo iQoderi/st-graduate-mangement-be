@@ -1,16 +1,13 @@
 /**
  * Created by qoder on 16/6/16.
  */
-/**
- * Created by qoder on 16/6/16.
- */
 const mongoose = require('mongoose');
-const UserModel = require('../../../models/Users');
+const UserModel = require('../../../../models/Users');
 const Users = mongoose.model('Users');
-const resHandler = require('../../../library/resHandler');
+const resHandler = require('../../../../library/resHandler');
 
 function modifyAdmin(req, res, next) {
-    if (res.user.role === '学生') {
+    if (req.user.role === '学生') {
         res.json({
             code: 10005,
             data: {
@@ -18,23 +15,52 @@ function modifyAdmin(req, res, next) {
             }
         })
     }
-    if (req.body.id) {
-        const condition = {id: req.body.id};
-        Users.remove(condition, function (err) {
+
+    if (req.query.id) {
+        const id = req.query.id;
+        const condition = {id: id};
+        const teacher = {
+            id: id,
+            name: req.body.name,
+            phone: req.body.phone,
+            role: req.body.role || '管理员',
+            academy: req.body.academy
+        };
+        const update = {
+            $set: {
+                id: id,
+                password: req.body.password,
+                teacher: teacher,
+                role: req.body.role || '管理员',
+                isActive: true,
+                isCompleteMsg: true
+            }
+        };
+
+        Users.update(condition, update, function (err, info) {
             if (err) {
                 res.json({
-                    code: 90007,
+                    code: 90009,
                     data: {
-                        Msg: '删除失败'
+                        Msg: '编辑信息失败'
                     }
                 })
             } else {
-                res.json({
-                    code: 10000,
-                    data: {
-                        Msg: '删除成功'
-                    }
-                })
+                if (info.n === 1) {
+                    res.json({
+                        code: 10000,
+                        data: {
+                            Msg: '编辑信息成功'
+                        }
+                    })
+                } else {
+                    res.json({
+                        code: 10011,
+                        data: {
+                            Msg: '用户不存在'
+                        }
+                    })
+                }
             }
         })
     } else {

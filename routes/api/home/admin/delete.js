@@ -6,7 +6,6 @@ const UserModel = require('../../../../models/Users');
 const Users = mongoose.model('Users');
 const resHandler = require('../../../../library/resHandler');
 
-
 function rmAdmin(req, res, next) {
     if (req.user.role === '学生') {
         res.json({
@@ -16,8 +15,8 @@ function rmAdmin(req, res, next) {
             }
         })
     }
-    if (req.body.id) {
-        const condition = {id: req.body.id};
+    if (req.query.id) {
+        const condition = {id: req.query.id};
         Users.remove(condition, function (err, info) {
             if (err) {
                 res.json({
@@ -53,5 +52,6 @@ function rmAdmin(req, res, next) {
         })
     }
 }
+
 
 module.exports = rmAdmin;

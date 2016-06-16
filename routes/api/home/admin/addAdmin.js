@@ -37,7 +37,7 @@ function addAdmin(req, res, next) {
                     const conditions = {
                         id: id,
                         email: req.body.email,
-                        password: req.body.email,
+                        password: req.body.password,
                         teacher: teacher,
                         role: req.body.role || '管理员',
                         isActive: true,
