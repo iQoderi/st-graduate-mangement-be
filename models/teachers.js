@@ -28,4 +28,5 @@ const teacher = new Schema({
     }
 });
 
+
 module.exports = teacher;

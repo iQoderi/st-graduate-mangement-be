@@ -3,10 +3,9 @@
  */
 const mongoose = require('mongoose');
 const uuid = require('uuid');
-const UserModel = require('../../../models/Users');
+const UserModel = require('../../../../models/Users');
 const Users = mongoose.model('Users');
-const unKnownError = require('../../../library/unknownError');
-const resHandler = require('../../../library/resHandler');
+const resHandler = require('../../../../library/resHandler');
 
 
 function addAdmin(req, res, next) {
@@ -16,7 +15,12 @@ function addAdmin(req, res, next) {
         const email = req.body.email;
         Users.findOne({email: email}, function (err, user) {
             if (err) {
-                unKnownError(res);
+                res.json({
+                    code: 10008,
+                    data: {
+                        Msg: '添加失败'
+                    }
+                })
             } else {
                 if (user) {
                     resHandler(10008, res);
@@ -41,7 +45,12 @@ function addAdmin(req, res, next) {
                     };
                     Users.create(conditions, function (err, user) {
                         if (err) {
-                            unKnownError(res);
+                            res.json({
+                                code: 10008,
+                                data: {
+                                    Msg: '添加失败'
+                                }
+                            })
                         } else {
                             res.json({
                                 code: 10000,
