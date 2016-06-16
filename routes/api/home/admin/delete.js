@@ -6,6 +6,7 @@ const UserModel = require('../../../../models/Users');
 const Users = mongoose.model('Users');
 const resHandler = require('../../../../library/resHandler');
 
+
 function rmAdmin(req, res, next) {
     if (req.user.role === '学生') {
         res.json({

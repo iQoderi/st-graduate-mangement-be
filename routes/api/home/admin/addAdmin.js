@@ -32,7 +32,8 @@ function addAdmin(req, res, next) {
                         email: req.body.email,
                         phone: req.body.phone,
                         role: req.body.role,
-                        academy: req.body.academy
+                        academy: req.body.academy,
+                        code:req.body.code
                     };
                     const conditions = {
                         id: id,
@@ -44,6 +45,7 @@ function addAdmin(req, res, next) {
                         isCompleteMsg: true
                     };
                     Users.create(conditions, function (err, user) {
+                        console.log(err);
                         if (err) {
                             res.json({
                                 code: 10008,

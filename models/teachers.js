@@ -32,5 +32,6 @@ const teacher = new Schema({
     }
 });
 
+mongoose.model('teacher', teacher);
 
 module.exports = teacher;

@@ -24,7 +24,8 @@ function modifyAdmin(req, res, next) {
             name: req.body.name,
             phone: req.body.phone,
             role: req.body.role || '管理员',
-            academy: req.body.academy
+            academy: req.body.academy,
+            code: req.body.code
         };
         const update = {
             $set: {
