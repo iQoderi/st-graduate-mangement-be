@@ -1,10 +1,6 @@
 /**
  * Created by qoder on 16/6/17.
  */
-/**
- * Created by qoder on 16/6/9.
- */
-/*登录*/
 const mongoose = require('mongoose');
 const moment = require('moment');
 const tokenCreator = require('../../../../library/tokenCreator');
@@ -40,5 +36,6 @@ function My(req, res, next) {
         }
     })
 }
+
 
 module.exports = My;

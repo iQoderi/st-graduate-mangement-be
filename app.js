@@ -13,7 +13,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 const host = '127.0.0.1';
-mongoose.connect('mongodb://' + host + ':27017/neuqst-graduate-mange');
+mongoose.connect(`mongodb://${host}:27017/neuqst-graduate-mange`);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

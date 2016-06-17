@@ -7,6 +7,7 @@ const router = express.Router();
 const checkToken = require('../../library/checkToken');
 
 const My = require('./home/users/my');
+const changePass = require('./home/users/changePass');
 
 const addAdmin = require('./home/admin/addAdmin');
 const rmAdmin = require('./home/admin/delete');
@@ -17,6 +18,8 @@ const getAdmin = require('./home/admin/getAdmin');
 router.use(checkToken);
 /*个人信息*/
 router.get('/my', My);     //获取个人基本信息
+router.put('/changePass', changePass);      //修改账号密码
+
 
 /*管理员*/
 router.get('/admin', getAdmin);      //获取管理员列表
