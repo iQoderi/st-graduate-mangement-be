@@ -27,4 +27,5 @@ router.post('/reSendEmail', reSendEmail);   //重新发送激活邮件
 router.post('/passNew', passNew);   //通过邮件认证重置密码
 router.post('/BaseMsg', checkToken, BaseMsg);   //完整个人基本信息
 
+
 module.exports = router;

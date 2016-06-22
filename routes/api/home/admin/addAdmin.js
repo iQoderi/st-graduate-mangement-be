@@ -39,13 +39,12 @@ function addAdmin(req, res, next) {
                         id: id,
                         email: req.body.email,
                         password: req.body.password,
-                        teacher: teacher,
+                        teacher: [teacher],
                         role: req.body.role || '管理员',
                         isActive: true,
                         isCompleteMsg: true
                     };
                     Users.create(conditions, function (err, user) {
-                        console.log(err);
                         if (err) {
                             res.json({
                                 code: 10008,

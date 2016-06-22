@@ -22,6 +22,7 @@ function login(req, res, next) {
                         const expires = moment().add(7, 'days').valueOf();
                         const id = user.id;
                         const token = tokenCreator(id, expires);
+                        console.log(user.isCompleteMsg);
                         if (user.isCompleteMsg) {
                             res.json({
                                 code: 10000,

@@ -24,9 +24,8 @@ function getAdmin(req, res, next) {
         req.query.start = 1;
     }
     if (req.query.start) {
-        start = (start - 1) * pageSize;
+        start = (req.query.start - 1) * pageSize+1;
     }
-
     var myCount = 0;
     teacher.count({teacher: {$size: 1}}).exec((err, count)=> {
         if (err) {
@@ -38,25 +37,30 @@ function getAdmin(req, res, next) {
             })
         } else {
             myCount = count;
-        }
-    });
-    teacher.find({teacher: {$size: 1}}, {teacher: 1, _id: 0}, {skip: start, limit: pageSize}).exec((err, data)=> {
-        if (err) {
-            res.json({
-                code: 90010,
-                data: {
-                    Msg: '获取列表失败'
+            teacher.find({teacher: {$size: 1}}, {teacher: 1, _id: 0}, {skip: start, limit: pageSize}).exec((err, data)=> {
+                console.log(err);
+                if (err) {
+                    res.json({
+                        code: 90010,
+                        data: {
+                            Msg: '获取列表失败'
+                        }
+                    })
+                } else {
+                    var pages=[];
+                    data.forEach((each)=>{
+                        pages.push(each.teacher[0])
+                    });
+                    res.json({
+                        code: 10000,
+                        data: {
+                            Msg: '获取成功',
+                            count: myCount,
+                            pages: pages
+                        }
+                    })
                 }
-            })
-        } else {
-            res.json({
-                code: 10000,
-                data: {
-                    Msg: '获取成功',
-                    count: myCount,
-                    pages: data
-                }
-            })
+            });
         }
     });
 }

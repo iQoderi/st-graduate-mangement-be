@@ -12,7 +12,7 @@ const home = require('./routes/api/home');
 const mongoose = require('mongoose');
 const app = express();
 
-const host = '127.0.0.1';
+const host = '123.206.16.40';
 mongoose.connect(`mongodb://${host}:27017/neuqst-graduate-mange`);
 
 
