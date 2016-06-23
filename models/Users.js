@@ -19,7 +19,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    name:String,
+    name: String,
     role: {
         type: String,
         default: '学生'
