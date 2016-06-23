@@ -52,5 +52,4 @@ function changePass(req, res, next) {
 }
 
 
-
 module.exports = changePass;

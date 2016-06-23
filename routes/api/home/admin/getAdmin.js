@@ -38,7 +38,7 @@ function getAdmin(req, res, next) {
         } else {
             myCount = count;
             teacher.find({teacher: {$size: 1}}, {teacher: 1, _id: 0}, {skip: start, limit: pageSize}).exec((err, data)=> {
-                console.log(err);
+                console.log(data);
                 if (err) {
                     res.json({
                         code: 90010,
