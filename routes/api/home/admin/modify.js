@@ -25,12 +25,13 @@ function modifyAdmin(req, res, next) {
             phone: req.body.phone,
             role: req.body.role || '管理员',
             academy: req.body.academy,
-            code: req.body.code
+            code: req.body.code,
+            email: req.body.email
         };
+
         const update = {
             $set: {
                 id: id,
-                password: req.body.password,
                 teacher: teacher,
                 role: req.body.role || '管理员',
                 isActive: true,

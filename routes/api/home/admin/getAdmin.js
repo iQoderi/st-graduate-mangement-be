@@ -15,7 +15,7 @@ function getAdmin(req, res, next) {
         })
     }
 
-    var start = 1;
+    var start = 0;
     var pageSize = 10;
     if (req.query.pageSize) {
         pageSize = parseInt(req.query.pageSize);
@@ -24,10 +24,10 @@ function getAdmin(req, res, next) {
         req.query.start = 1;
     }
     if (req.query.start) {
-        start = (req.query.start - 1) * pageSize+1;
+        start = (req.query.start - 1) * pageSize;
     }
     var myCount = 0;
-    teacher.count({teacher: {$size: 1}}).exec((err, count)=> {
+    teacher.count({teacher: {$exists: true}}).exec((err, count)=> {
         if (err) {
             res.json({
                 code: 90010,
@@ -37,8 +37,10 @@ function getAdmin(req, res, next) {
             })
         } else {
             myCount = count;
-            teacher.find({teacher: {$size: 1}}, {teacher: 1, _id: 0}, {skip: start, limit: pageSize}).exec((err, data)=> {
-                console.log(data);
+            teacher.find({teacher: {$exists: true}}, {teacher: 1, _id: 0}, {
+                skip: start,
+                limit: pageSize
+            }).exec((err, data)=> {
                 if (err) {
                     res.json({
                         code: 90010,
@@ -47,9 +49,9 @@ function getAdmin(req, res, next) {
                         }
                     })
                 } else {
-                    var pages=[];
-                    data.forEach((each)=>{
-                        pages.push(each.teacher[0])
+                    var pages = [];
+                    data.forEach((each)=> {
+                        pages.push(each.teacher);
                     });
                     res.json({
                         code: 10000,

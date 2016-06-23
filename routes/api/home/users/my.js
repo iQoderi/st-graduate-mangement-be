@@ -12,7 +12,7 @@ const resHandler = require('../../../../library/resHandler');
 
 function My(req, res, next) {
     const condition = {id: req.user.id};
-    const options = {id: 1, name: 1, email: 1, _id: 0, role: 1,isCompleteMsg:1,isActive:1};
+    const options = {id: 1, name: 1, email: 1, _id: 0, role: 1, isCompleteMsg: 1, isActive: 1};
     Users.findOne(condition, options).exec((err, users)=> {
         if (err) {
             unKnownError(res);

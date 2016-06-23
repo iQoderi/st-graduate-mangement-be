@@ -33,18 +33,20 @@ function addAdmin(req, res, next) {
                         phone: req.body.phone,
                         role: req.body.role,
                         academy: req.body.academy,
-                        code:req.body.code
+                        code: req.body.code
                     };
                     const conditions = {
                         id: id,
                         email: req.body.email,
                         password: req.body.password,
-                        teacher: [teacher],
+                        teacher: teacher,
                         role: req.body.role || '管理员',
                         isActive: true,
                         isCompleteMsg: true
                     };
-                    Users.create(conditions, function (err, user) {
+                    
+                    const UserEntity = new Users(conditions);
+                    UserEntity.save((err, user)=> {
                         if (err) {
                             res.json({
                                 code: 10008,
