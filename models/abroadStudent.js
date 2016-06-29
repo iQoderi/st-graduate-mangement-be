@@ -1,9 +1,6 @@
 /**
  * Created by qoder on 16-6-26.
  */
-/**
- * Created by qoder on 16-6-26.
- */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

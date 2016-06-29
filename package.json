@@ -11,12 +11,14 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "fs": "0.0.2",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "ejs": "^2.3.4",
     "email-templates": "^2.3.0",
+    "excel-export": "^0.5.1",
     "fs": "0.0.2",
     "jwt-simple": "^0.5.0",
     "moment": "^2.13.0",
