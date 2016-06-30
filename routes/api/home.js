@@ -15,6 +15,7 @@ const modifyAdmin = require('./home/admin/modify');
 const getAdmin = require('./home/admin/getAdmin');
 const changeAdminPass=require('./home/admin/changePass');
 const getExcel=require('./home/excel/getExcel');
+const addGraduate=require('./home/users/addGraduate');
 router.use(checkToken);
 /*个人信息*/
 router.get('/my', My);     //获取个人基本信息
@@ -28,5 +29,7 @@ router.put('/admin', modifyAdmin);      //编辑管理员
 router.delete('/admin', rmAdmin);      //删除管理员
 router.put('/changeAdminPass',changeAdminPass);      //修改管理员密码
 
-router.get('/excel',getExcel);      //huoquexcel
+router.get('/excel',getExcel);      //获取excel
+
+router.post('/addGraduate',addGraduate);
 module.exports = router;

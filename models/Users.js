@@ -3,9 +3,8 @@
  */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Students = require('./Students');
-const teacher = require('./teachers');
-
+const graduate=require('./Graduates');
+const aborad=require('./abroadStudent');
 
 const UserSchema = new Schema({
     id: {
@@ -35,7 +34,15 @@ const UserSchema = new Schema({
         default: false
     },
     students: Schema.Types.Mixed,
-    teacher: Schema.Types.Mixed
+    teacher: Schema.Types.Mixed,
+    graduate:{
+        type:String,
+        ref:'graduate'
+    },
+    aborad:{
+        type:String,
+        ref:'aborad'
+    }
 });
 
 

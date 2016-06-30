@@ -25,35 +25,21 @@ const Graduates = new Schema({
         type: String,
         required: true
     },
-    company: {
-        type: String,
-        required: true
+    school:{
+        type:String,
+        required:true
     },
-    job: {
-        type: String,
-        required: true
+    ifGraduated:{
+        type:Boolean,
+        default:false
     },
-    skill: {
-        type: String,
-        required: true
-    },
-    interview: {
-        type: String,
-        required: true
-    },
-    employment: {
-        type: String
-    },
-    suggestion: {
-        type: String,
-        required: true
-    },
-    QQ: {
-        type: String
+    afterGraduate:{
+        type:Number,
+        default:1            //1读博 2就业
     }
 });
 
 
-const GraduateModel = mongoose.model('graduate', Graduates);
+const aboradModel = mongoose.model('aborad', Graduates);
 
-module.exports = GraduateModel;
+module.exports = aboradModel;
