@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Students = require('./Students');
 const teacher = require('./teachers');
+
+
 const UserSchema = new Schema({
     id: {
         type: 'String',
