@@ -1,13 +1,11 @@
 /**
- * Created by qoder on 16-7-1.
+ * Created by qoder on 16/7/22.
  */
 const mongoose = require('mongoose');
-const graduate = require('../../../../models/Graduates');
-const Users = mongoose.model('Users');
-const graduateModel = mongoose.model('graduate');
+const abroad = require('../../../../models/abroadStudent');
+const abroadModel = mongoose.model('abroad');
 
-
-function addGraduate(req, res) {
+function addAbroad(req, res) {
     const condition = {id: req.user.id};
     const data = {id: req.user.id};
     if (req.user.role !== '学生') {
@@ -20,7 +18,6 @@ function addGraduate(req, res) {
 
         return;
     }
-    
     graduateModel.findOne(condition).exec((err, user)=> {
         if (err) {
             res.json({
@@ -109,4 +106,4 @@ function addGraduate(req, res) {
 }
 
 
-module.exports = addGraduate;
+module.exports = addAbroad;

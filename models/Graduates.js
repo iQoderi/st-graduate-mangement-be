@@ -6,45 +6,47 @@ const Schema = mongoose.Schema;
 
 const Graduates = new Schema({
     name: {
-        type: String,
+        type: String
     },
-    Num: {
-        type: String,
+    stuId: {
+        type: String
     },
     academy: {
-        type: String,
+        type: String
     },
     major: {
-        type: String,
+        type: String
     },
     class: {
-        type: String,
+        type: String
     },
     company: {
-        type: String,
+        type: String
     },
     job: {
-        type: String,
+        type: String
     },
     skill: {
-        type: String,
+        type: String
     },
-    interview: {
-        type: String,
+    question: {
+        type: String
     },
-    employment: {
+    recruit: {
         type: String
     },
     suggestion: {
-        type: String,
-    },
-    QQ: {
         type: String
     },
-    id:{
-        type:String
+    qq: {
+        type: String
+    },
+    id: {
+        type: String
+    },
+    phone: {
+        type: String
     }
-
 });
 
 

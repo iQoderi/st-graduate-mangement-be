@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const graduate=require('./Graduates');
-const aborad=require('./abroadStudent');
+const abroad=require('./abroadStudent');
 
 const UserSchema = new Schema({
     id: {
@@ -41,7 +41,7 @@ const UserSchema = new Schema({
     },
     aborad:{
         type:String,
-        ref:'aborad'
+        ref:'abroad'
     }
 });
 

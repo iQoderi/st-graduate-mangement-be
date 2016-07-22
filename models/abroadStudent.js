@@ -9,7 +9,7 @@ const Graduates = new Schema({
         type: String,
         required: true
     },
-    Num: {
+    stuId: {
         type: String,
         required: true
     },
@@ -25,21 +25,21 @@ const Graduates = new Schema({
         type: String,
         required: true
     },
-    school:{
-        type:String,
-        required:true
+    school: {
+        type: String,       //留学学校
+        required: true
     },
-    ifGraduated:{
-        type:Boolean,
-        default:false
+    isGraduate: {
+        type: Boolean,
+        default: false
     },
-    afterGraduate:{
-        type:Number,
-        default:1            //1读博 2就业
+    afterGraduate: {
+        type: Number,
+        default: 1        //1读博 2就业
     }
 });
 
 
-const aboradModel = mongoose.model('aborad', Graduates);
+const aboradModel = mongoose.model('abroad', Graduates);
 
 module.exports = aboradModel;

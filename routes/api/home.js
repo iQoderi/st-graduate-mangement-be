@@ -15,9 +15,13 @@ const rmAdmin = require('./home/admin/delete');
 const modifyAdmin = require('./home/admin/modify');
 const getAdmin = require('./home/admin/getAdmin');
 const changeAdminPass = require('./home/admin/changePass');
+
 const getExcel = require('./home/excel/getExcel');
 const addGraduate = require('./home/users/addGraduate');
+const modifyGraduate = require('./home/users/modifyGraduate');
+
 router.use(checkToken);
+
 /*个人信息*/
 router.get('/my', My);     //获取个人基本信息
 router.post('/my', editMyMsg);     //修改个人基本信息
@@ -33,9 +37,8 @@ router.put('/changeAdminPass', changeAdminPass);      //修改管理员密码
 
 router.get('/excel', getExcel);      //获取excel
 
-router.post('/addGraduate', addGraduate);
+/*毕业生*/
+router.post('/graduate', addGraduate);     //添加毕业生
+router.put('/graduate', modifyGraduate);    //修改毕业生信息
 
-const test = require('./home/users/population');
-
-router.get('/test', test);
 module.exports = router;
