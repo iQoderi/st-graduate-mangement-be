@@ -34,4 +34,8 @@ router.put('/changeAdminPass', changeAdminPass);      //修改管理员密码
 router.get('/excel', getExcel);      //获取excel
 
 router.post('/addGraduate', addGraduate);
+
+const test = require('./home/users/population');
+
+router.get('/test', test);
 module.exports = router;
