@@ -20,6 +20,7 @@ const adminAddGraduate = require('./home/admin/graduate');
 const getExcel = require('./home/excel/getExcel');
 const addGraduate = require('./home/users/addGraduate');
 const modifyGraduate = require('./home/users/modifyGraduate');
+const searchGraduate = require('./home/graduate/searchGraduage');
 
 router.use(checkToken);
 
@@ -37,6 +38,7 @@ router.delete('/admin', rmAdmin);      //删除管理员
 router.put('/changeAdminPass', changeAdminPass);      //修改管理员密码
 
 router.post('/admin/graduate', adminAddGraduate);      //管理员添加毕业生信息
+router.post('/searchGraduate', searchGraduate);      //查找毕业生
 
 router.get('/excel', getExcel);      //获取excel
 
