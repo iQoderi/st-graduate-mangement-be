@@ -15,6 +15,7 @@ const rmAdmin = require('./home/admin/delete');
 const modifyAdmin = require('./home/admin/modify');
 const getAdmin = require('./home/admin/getAdmin');
 const changeAdminPass = require('./home/admin/changePass');
+const adminAddGraduate = require('./home/admin/graduate');
 
 const getExcel = require('./home/excel/getExcel');
 const addGraduate = require('./home/users/addGraduate');
@@ -34,6 +35,8 @@ router.post('/admin', addAdmin);      //添加管理员
 router.put('/admin', modifyAdmin);      //编辑管理员
 router.delete('/admin', rmAdmin);      //删除管理员
 router.put('/changeAdminPass', changeAdminPass);      //修改管理员密码
+
+router.post('/admin/graduate', adminAddGraduate);      //管理员添加毕业生信息
 
 router.get('/excel', getExcel);      //获取excel
 
