@@ -23,27 +23,31 @@ const ExcelTpl = [{
     type: 'string',
     width:10
 }, {
-    caption: 'QQ',
+    caption: '手机',
     type: 'string',
     width:15
 }, {
+    caption: 'QQ',
+    type: 'string',
+    width:15
+},{
     caption: '就业公司',
     type: 'string',
     width:20
-}, {
-    caption: '技能',
+},{
+    caption: '就业岗位',
+    type: 'string',
+    width:20
+},{
+    caption: '职能',
     type: 'string',
     width:10
-}, {
-    caption: '面试问题',
-    type: 'string',
-    width:20
-}, {
-    caption: '公司招聘信息',
-    type: 'string',
-    width:20
-}, {
+},{
     caption: '建议',
+    type: 'string',
+    width:20
+},{
+    caption: '公司招聘信息',
     type: 'string',
     width:20
 }];

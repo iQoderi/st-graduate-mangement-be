@@ -10,7 +10,7 @@ function searchGraduate(req, res, next) {
     if (req.body.academy && req.body.academy != '全部') {
         condition.academy = req.body.academy;
     }
-    
+
     if (req.body.major) {
         condition.major = req.body.major;
     }
@@ -45,7 +45,6 @@ function searchGraduate(req, res, next) {
                 skip: start,
                 limit: pageSize
             }).exec((err, user)=> {
-                console.log(user);
                 if (err) {
                     res.json({
                         code: 90013,
