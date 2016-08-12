@@ -37,7 +37,7 @@ router.put('/admin', modifyAdmin);      //编辑管理员
 router.delete('/admin', rmAdmin);      //删除管理员
 router.put('/changeAdminPass', changeAdminPass);     //修改管理员密码
 
-router.get('/excel', getExcel);                      //获取excel
+router.post('/excel', getExcel);                      //获取excel
 
 /*毕业生*/
 router.post('/searchGraduate', searchGraduate);      //查找毕业生

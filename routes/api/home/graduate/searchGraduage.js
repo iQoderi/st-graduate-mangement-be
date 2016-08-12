@@ -10,7 +10,7 @@ function searchGraduate(req, res, next) {
     if (req.body.academy && req.body.academy != '全部') {
         condition.academy = req.body.academy;
     }
-
+    
     if (req.body.major) {
         condition.major = req.body.major;
     }
