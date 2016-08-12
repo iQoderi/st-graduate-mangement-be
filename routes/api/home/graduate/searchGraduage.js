@@ -6,7 +6,18 @@ const graduate = require('../../../../models/Graduates');
 const graduateModel = mongoose.model('graduate');
 
 function searchGraduate(req, res, next) {
-    const condition = req.body;
+    const condition = {};
+    if (req.body.academy && req.body.academy != '全部') {
+        condition.academy = req.body.academy;
+    }
+
+    if (req.body.major) {
+        condition.major = req.body.major;
+    }
+
+    if (req.body.stuId) {
+        condition.stuId = req.body.stuId;
+    }
 
     var start = 0;
     var pageSize = 10;
@@ -20,7 +31,7 @@ function searchGraduate(req, res, next) {
         start = (req.query.start - 1) * pageSize;
     }
     var myCount = 0;
-    graduateModel.count().exec((err, count)=> {
+    graduateModel.count(condition).exec((err, count)=> {
         if (err) {
             res.json({
                 code: 90013,
@@ -34,6 +45,7 @@ function searchGraduate(req, res, next) {
                 skip: start,
                 limit: pageSize
             }).exec((err, user)=> {
+                console.log(user);
                 if (err) {
                     res.json({
                         code: 90013,

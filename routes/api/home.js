@@ -20,6 +20,7 @@ const adminAddGraduate = require('./home/admin/graduate');
 const getExcel = require('./home/excel/getExcel');
 const addGraduate = require('./home/users/addGraduate');
 const modifyGraduate = require('./home/users/modifyGraduate');
+const rmGraduate = require('./home/graduate/rmGraduate');
 const searchGraduate = require('./home/graduate/searchGraduage');
 
 router.use(checkToken);
@@ -29,21 +30,20 @@ router.get('/my', My);     //获取个人基本信息
 router.post('/my', editMyMsg);     //修改个人基本信息
 router.put('/changePass', changePass);      //修改账号密码
 
-
 /*管理员*/
 router.get('/admin', getAdmin);      //获取管理员列表
 router.post('/admin', addAdmin);      //添加管理员
 router.put('/admin', modifyAdmin);      //编辑管理员
 router.delete('/admin', rmAdmin);      //删除管理员
-router.put('/changeAdminPass', changeAdminPass);      //修改管理员密码
+router.put('/changeAdminPass', changeAdminPass);     //修改管理员密码
 
-router.post('/admin/graduate', adminAddGraduate);      //管理员添加毕业生信息
-router.post('/searchGraduate', searchGraduate);      //查找毕业生
-
-router.get('/excel', getExcel);      //获取excel
+router.get('/excel', getExcel);                      //获取excel
 
 /*毕业生*/
-router.post('/graduate', addGraduate);     //添加毕业生
-router.put('/graduate', modifyGraduate);    //修改毕业生信息
+router.post('/searchGraduate', searchGraduate);      //查找毕业生
+router.post('/graduate', addGraduate);               //添加毕业生
+router.delete('/graduate', rmGraduate);              //删除毕业生
+router.post('/admin/graduate', adminAddGraduate);    //管理员添加毕业生信息
+router.put('/graduate', modifyGraduate);             //修改毕业生信息
 
 module.exports = router;
