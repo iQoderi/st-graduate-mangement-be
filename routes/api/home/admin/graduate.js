@@ -44,7 +44,6 @@ function adminAddGraduate(req, res, next) {
         })
     }
     var flag = true;
-    console.log(reqBody)
     for (var item in reqBody) {
         if (!reqBody[item]) {
             flag = false;

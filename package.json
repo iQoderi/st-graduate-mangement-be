@@ -11,10 +11,14 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "formidable": "^1.0.17",
     "fs": "0.0.2",
     "http": "0.0.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "node-xlrd": "^0.2.4",
+    "node-xlsx": "^0.7.1",
+    "serve-favicon": "~2.3.0",
+    "xlsjs": "^0.7.5"
   },
   "devDependencies": {
     "ejs": "^2.3.4",
