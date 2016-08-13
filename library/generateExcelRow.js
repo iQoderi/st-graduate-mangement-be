@@ -3,13 +3,13 @@
  */
 
 function verifyData(data) {
-    return data||'未填写';
+    return data || '未填写';
 }
 
 function generateExcelRow(dataSource) {
-    var resource=[];
-    dataSource.forEach((data,index)=>{
-        resource[index]=[];
+    var resource = [];
+    dataSource.forEach((data, index)=> {
+        resource[index] = [];
         resource[index].push(verifyData(data.name));
         resource[index].push(verifyData(data.academy));
         resource[index].push(verifyData(data.major));
@@ -23,8 +23,7 @@ function generateExcelRow(dataSource) {
         resource[index].push(verifyData(data.suggestion));
         resource[index].push(verifyData(data.recruit));
     });
-
     return resource;
 }
 
-module.exports=generateExcelRow;
+module.exports = generateExcelRow;

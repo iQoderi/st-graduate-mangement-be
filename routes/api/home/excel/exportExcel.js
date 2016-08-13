@@ -2,11 +2,11 @@
  * Created by qoder on 16-8-12.
  */
 const nodeExcel = require('excel-export');
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 const graduate = require('../../../../models/Graduates');
 const graduateModel = mongoose.model('graduate');
 const ExcelTpl = require('../../../../library/excelTpl');
-const generateExcelRow=require('../../../../library/generateExcelRow');
+const generateExcelRow = require('../../../../library/generateExcelRow');
 
 function exportStu(req, res, next) {
     if (req.user.role !== '管理员' && req.user.role !== '辅导员') {
@@ -16,7 +16,7 @@ function exportStu(req, res, next) {
                 msg: '用户没有权限'
             }
         });
-        return;
+        return false;
     } else {
         const condition = {};
         if (req.body.academy && req.body.academy !== '全部') {
@@ -47,7 +47,7 @@ function exportStu(req, res, next) {
                 if (Array.isArray(user)) {
                     var conf = {};
                     // conf.stylesXmlFile = "styles.xml";
-                    conf.name = "东北大学秦皇岛分校大学生就业择业中心";
+                    conf.name = "mysheet";
                     conf.cols = ExcelTpl;
                     conf.rows = generateExcelRow(user);
                     var result = nodeExcel.execute(conf);
@@ -67,6 +67,6 @@ function exportStu(req, res, next) {
     }
 }
 
-module.exports=exportStu;
+module.exports = exportStu;
 
 
