@@ -46,42 +46,51 @@ function uploadExcel(req,res,next) {
         var newPath = form.uploadDir + excelName;
         fs.renameSync(files.excel.path, newPath);  //重命名
         const workSheetsFromFile = xlsx.parse(fs.readFileSync(newPath));
-        const data=parseExcel(res,workSheetsFromFile[0].data);
-        if(Array.isArray(data)){
-            var SUCC_COOUNT=0;
-            var importPromise=new Promise((resolve,reject)=>{
-                data.forEach((each)=>{
-                    var graduate = new graduateModel(each);
-                    graduate.save((err)=>{
-                        if(err){
-                           reject(SUCC_COOUNT);
-                        }else{
-                            console.log('called');
-                            SUCC_COOUNT++;
+        console.log(workSheetsFromFile);
+        if(workSheetsFromFile.length<1){
+            res.json({
+                code:90017,
+                data:{
+                    msg:'上传失败'
+                }
+            })
+        }else{
+            const data=parseExcel(res,workSheetsFromFile[0].data);
+            if(Array.isArray(data)){
+                var SUCC_COOUNT=0;
+                var importPromise=new Promise((resolve,reject)=>{
+                    data.forEach((each)=>{
+                        var graduate = new graduateModel(each);
+                        graduate.save((err)=>{
+                            if(err){
+                                reject(SUCC_COOUNT);
+                            }else{
+                                SUCC_COOUNT++;
+                            }
+                        })
+                    });
+
+                    resolve(data.length);
+                });
+
+                importPromise.then((count)=>{
+                    res.json({
+                        code:10000,
+                        data:{
+                            msg:'上传成功',
+                            count:count
                         }
                     })
+                }).catch((count)=>{
+                    res.json({
+                        code:90018,
+                        data:{
+                            msg:'部分成功',
+                            count:count
+                        }
+                    });
                 });
-
-                resolve(data.length);
-            });
-
-            importPromise.then((count)=>{
-                res.json({
-                    code:10000,
-                    data:{
-                        msg:'上传成功',
-                        count:count
-                    }
-                })
-            }).catch((count)=>{
-                res.json({
-                    code:90018,
-                    data:{
-                        msg:'部分成功',
-                        count:count
-                    }
-                });
-            });
+            }
         }
     });
 }
