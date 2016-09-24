@@ -10,6 +10,7 @@ const graduateModel = mongoose.model('graduate');
 function addGraduate(req, res) {
     const condition = {id: req.user.id};
     const data = {id: req.user.id};
+    console.log(req.user)
     if (req.user.role !== '学生') {
         res.json({
             code: 90010,
@@ -29,7 +30,6 @@ function addGraduate(req, res) {
                     msg: '未知错误'
                 }
             });
-
             return;
         }
         if (user) {
@@ -43,7 +43,7 @@ function addGraduate(req, res) {
             return;
         } else {
             try {
-                const data = {
+                var data = {
                     id: req.user.id,
                     name: req.user.students.name,
                     stuId: req.user.students.studentId,
