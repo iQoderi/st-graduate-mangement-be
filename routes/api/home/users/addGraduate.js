@@ -10,7 +10,6 @@ const graduateModel = mongoose.model('graduate');
 function addGraduate(req, res) {
     const condition = {id: req.user.id};
     const data = {id: req.user.id};
-    console.log(req.user)
     if (req.user.role !== '学生') {
         res.json({
             code: 90010,
