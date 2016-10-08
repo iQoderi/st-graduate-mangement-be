@@ -10,16 +10,15 @@ const graduateModel = mongoose.model('graduate');
 function modifyGraduate(req, res, next) {
     const data = {
         skill: req.body.skill,
-        question: req.body.question,
         company: req.body.company,
         job: req.body.job,
-        suggestion: req.body.suggestion,
-        recruit: req.body.recruit
+        suggestion: req.body.suggestion||'',
+        recruit: req.body.recruit||''
     };
 
     var flag = true;
     for (var item in data) {
-        if (!data[item]) {
+        if (!data[item]&&data[item]!='') {
             flag = false;
             res.json({
                 code: 10001,

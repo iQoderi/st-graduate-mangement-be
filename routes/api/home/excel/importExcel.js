@@ -14,7 +14,7 @@ const parseExcel=require('../../../../library/parseExcel');
 function uploadExcel(req,res,next) {
     var form = new formidable.IncomingForm();   //创建上传表单
     form.encoding = 'utf-8';        //设置编辑
-    form.uploadDir = 'public/excel/';     //设置上传目录
+    form.uploadDir =__dirname+ '/../../../../public/excel/'; 
     form.keepExtensions = true;     //保留后缀
     form.maxFieldsSize = 5 * 1024 * 1024;   //文件大小
     form.parse(req, function (err, fields, files) {

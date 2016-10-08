@@ -27,7 +27,7 @@ const ExcelTpl = [{
     type: 'string',
     width: 15
 }, {
-    caption: 'QQ',
+    caption: 'QQ(微信)',
     type: 'string',
     width: 15
 }, {

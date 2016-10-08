@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.json({
     code:10000,
     data:{
-      name:'胡兴国',
-      is:'sb'
+      name:'齐超',
+      is:'shuaibi'
     }
   })
 });

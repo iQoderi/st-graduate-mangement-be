@@ -53,11 +53,10 @@ function addGraduate(req, res) {
                     class: req.user.students.class,
                     phone: req.user.students.phone,
                     skill: req.body.skill,
-                    question: req.body.question,
                     company: req.body.company,
                     job: req.body.job,
-                    suggestion: req.body.suggestion,
-                    recruit: req.body.recruit
+                    suggestion: req.body.suggestion||'',
+                    recruit: req.body.recruit||''
                 };
             } catch (e) {
                 res.json({
@@ -70,7 +69,7 @@ function addGraduate(req, res) {
             var flag = true;
 
             for (var item in data) {
-                if (!data[item]) {
+                if (!data[item]&&data[item]!='') {
                     flag = false;
                     break;
                 }

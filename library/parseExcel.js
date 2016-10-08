@@ -15,7 +15,7 @@ function parseExcel(res,data) {
             '班级',
             '学号',
             '手机',
-            'QQ',
+            'QQ(微信)',
             '就业公司',
             '就业岗位',
             '职能',
