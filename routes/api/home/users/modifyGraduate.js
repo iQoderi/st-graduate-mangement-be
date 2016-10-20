@@ -10,6 +10,7 @@ const graduateModel = mongoose.model('graduate');
 function modifyGraduate(req, res, next) {
     const data = {
         skill: req.body.skill,
+        role:req.body.role,
         company: req.body.company,
         job: req.body.job,
         suggestion: req.body.suggestion||'',

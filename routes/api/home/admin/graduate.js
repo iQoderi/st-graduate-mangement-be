@@ -24,6 +24,7 @@ function adminAddGraduate(req, res, next) {
             name: req.body.name,
             stuId: req.body.stuId,
             academy: req.body.academy,
+            role: req.body.role,
             major: req.body.major,
             qq: req.body.QQNumber || '无',
             class: req.body.class,

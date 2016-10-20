@@ -8,6 +8,9 @@ const Graduates = new Schema({
     name: {
         type: String
     },
+    role: {
+        type: String
+    },
     stuId: {
         type: String
     },

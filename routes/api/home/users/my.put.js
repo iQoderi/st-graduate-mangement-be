@@ -3,6 +3,8 @@
  */
 const mongoose = require('mongoose');
 const Users = mongoose.model('Users');
+const graduateModel=require('../../../../models/Graduates');
+const Graduate=mongoose.model('graduate');
 
 function editMyMsg(req, res, next) {
     const condition = {id: req.user.id};
@@ -19,7 +21,6 @@ function editMyMsg(req, res, next) {
     } else {
         for (var item2 in req.user.students) {
             if (!updateData[item]) {
-                console.log(item);
                 updateData[item] = req.user.teacher[item]
             }
         }
@@ -36,6 +37,20 @@ function editMyMsg(req, res, next) {
             })
         } else {
             if (info.n === 1) {
+		if(req.user.role==='学生'){
+			const updateBys={
+				name:updateData.name,
+				stuId:updateData.studentId,
+				academy:updateData.academy,
+				major:updateData.major,
+				class:updateData.class,
+				phone:updateData.phone,
+				qq:updateData.QQNumber
+				
+			};
+			Graduate.update(condition,updateBys).exec((err,info)=>{
+			});
+		}
                 res.json({
                     code: 10000,
                     data: {
