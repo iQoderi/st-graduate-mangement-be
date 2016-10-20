@@ -23,7 +23,6 @@ const modifyGraduate = require('./home/users/modifyGraduate');
 const getGraduateMsg=require('./home/graduate/getGraduateMsg');
 const rmGraduate = require('./home/graduate/rmGraduate');
 const searchGraduate = require('./home/graduate/searchGraduage');
-const getGraduateMsg=require('./home/graduate/getGraduateMsg');
 const getExcel = require('./home/excel/getExcel');
 const uploadExcel=require('./home/excel/importExcel');
 

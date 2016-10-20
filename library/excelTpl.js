@@ -23,6 +23,10 @@ const ExcelTpl = [{
     type: 'string',
     width: 10
 }, {
+    caption: '毕业走向',
+    type: 'string',
+    width: 15
+}, {
     caption: '手机',
     type: 'string',
     width: 15
@@ -31,15 +35,15 @@ const ExcelTpl = [{
     type: 'string',
     width: 15
 }, {
-    caption: '就业公司',
+    caption: '就业公司(学校)',
     type: 'string',
     width: 20
 }, {
-    caption: '就业岗位',
+    caption: '就业岗位(专业)',
     type: 'string',
     width: 20
 }, {
-    caption: '职能',
+    caption: '职能(方向)',
     type: 'string',
     width: 10
 }, {
@@ -47,7 +51,7 @@ const ExcelTpl = [{
     type: 'string',
     width: 20
 }, {
-    caption: '公司招聘信息',
+    caption: '公司(学校)招聘信息',
     type: 'string',
     width: 20
 }];

@@ -15,6 +15,7 @@ function generateExcelRow(dataSource) {
         resource[index].push(verifyData(data.major));
         resource[index].push(verifyData(data.class));
         resource[index].push(verifyData(data.stuId));
+        resource[index].push(verifyData(data.role));
         resource[index].push(verifyData(data.phone));
         resource[index].push(verifyData(data.qq));
         resource[index].push(verifyData(data.company));

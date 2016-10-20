@@ -46,7 +46,6 @@ function uploadExcel(req,res,next) {
         var newPath = form.uploadDir + excelName;
         fs.renameSync(files.excel.path, newPath);  //重命名
         const workSheetsFromFile = xlsx.parse(fs.readFileSync(newPath));
-        console.log(workSheetsFromFile);
         if(workSheetsFromFile.length<1){
             res.json({
                 code:90017,
