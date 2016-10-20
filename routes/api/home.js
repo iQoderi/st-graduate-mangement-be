@@ -23,6 +23,7 @@ const modifyGraduate = require('./home/users/modifyGraduate');
 const getGraduateMsg=require('./home/graduate/getGraduateMsg');
 const rmGraduate = require('./home/graduate/rmGraduate');
 const searchGraduate = require('./home/graduate/searchGraduage');
+const getGraduateMsg=require('./home/graduate/getGraduateMsg');
 const getExcel = require('./home/excel/getExcel');
 const uploadExcel=require('./home/excel/importExcel');
 
@@ -50,9 +51,10 @@ router.post('/uploadExcel', uploadExcel);               //上传excel
 
 /*毕业生*/
 router.post('/searchGraduate', searchGraduate);      //查找毕业生
-router.post('/graduate', addGraduate);               //添加毕业生
 router.delete('/admin/graduate', rmGraduate);              //删除毕业生
 router.post('/admin/graduate', adminAddGraduate);    //管理员添加毕业生信息
+
+router.post('/graduate', addGraduate);               //添加毕业生
 router.put('/graduate', modifyGraduate);             //修改毕业生信息
 router.get('/graduate',getGraduateMsg);             //获取毕业生信息
 

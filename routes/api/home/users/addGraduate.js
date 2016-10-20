@@ -29,7 +29,6 @@ function addGraduate(req, res) {
                     msg: '未知错误'
                 }
             });
-
             return;
         }
         if (user) {
@@ -43,7 +42,7 @@ function addGraduate(req, res) {
             return;
         } else {
             try {
-                const data = {
+                var data = {
                     id: req.user.id,
                     name: req.user.students.name,
                     stuId: req.user.students.studentId,
