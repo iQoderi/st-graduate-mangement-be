@@ -11,6 +11,10 @@ function searchGraduate(req, res, next) {
         condition.academy = req.body.academy;
     }
 
+    if (req.body.role && req.body.role != '全部') {
+        condition.role = req.body.role;
+    }
+
     if (req.body.major) {
         condition.major = req.body.major;
     }
