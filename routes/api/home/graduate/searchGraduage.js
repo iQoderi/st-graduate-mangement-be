@@ -15,8 +15,13 @@ function searchGraduate(req, res, next) {
         condition.role = req.body.role;
     }
 
+
     if (req.body.major) {
         condition.major = req.body.major;
+    }
+
+    if (req.body.class) {
+        condition.class = req.body.class;
     }
 
     if (req.body.stuId) {

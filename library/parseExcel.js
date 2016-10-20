@@ -8,6 +8,12 @@ var verifyData = function (data) {
 
 function parseExcel(res, data) {
     if (Array.isArray(data)) {
+        for (var i = data.length - 1; i > 0; i--) {
+            if (data[i].length === 0) {
+                data.splice(i, 1);
+            }
+        }
+
         const excelHeader = [
             '姓名',
             '学院',
