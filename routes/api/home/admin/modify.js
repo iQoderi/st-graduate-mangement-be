@@ -21,47 +21,22 @@ function modifyAdmin(req, res, next) {
 
         const update = {
             $set: {
-                id: id,
-                teacher: teacher,
-                role: req.body.role || '管理员',
-                isActive: true,
-                isCompleteMsg: true
-            }
+                id: id, teacher: teacher,
+                role: req.body.role || '管理员', isActive: true, isCompleteMsg: true}
         };
-
         Users.update(condition, update, function (err, info) {
             if (err) {
-                res.json({
-                    code: 90009,
-                    data: {
-                        Msg: '编辑信息失败'
-                    }
-                })
+                res.json({code: 90009, data: {msg: '编辑信息失败'}})
             } else {
                 if (info.n === 1) {
-                    res.json({
-                        code: 10000,
-                        data: {
-                            Msg: '编辑信息成功'
-                        }
-                    })
+                    res.json({code: 10000, data: {msg: '编辑信息成功'}})
                 } else {
-                    res.json({
-                        code: 10011,
-                        data: {
-                            Msg: '用户不存在'
-                        }
-                    })
+                    res.json({code: 10011, data: {msg: '用户不存在'}})
                 }
             }
         })
     } else {
-        res.json({
-            code: 10001,
-            data: {
-                Msg: '数据请求格式错误'
-            }
-        })
+        res.json({code: 10001, data: {msg: '数据请求格式错误'}})
     }
 }
 

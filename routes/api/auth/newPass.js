@@ -19,21 +19,10 @@ function passNew(req, res, next) {
             if (err) {
                 unKnownError(res);
             } else {
-                console.log(user);
                 if (user.n === 1) {
-                    res.json({
-                        code: 10000,
-                        data: {
-                            Msg: '密码修改成功'
-                        }
-                    })
+                    res.json({code: 10000, data: {msg: '密码修改成功'}})
                 } else {
-                    res.json({
-                        code: 90002,
-                        data: {
-                            Msg: '邮件验证失败'
-                        }
-                    })
+                    res.json({code: 90002, data: {msg: '邮件验证失败'}})
                 }
             }
         })

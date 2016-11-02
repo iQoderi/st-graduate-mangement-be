@@ -33,12 +33,7 @@ function reSendEmail(req, res, next) {
                         };
                         emailSender(mailOptions, res);
                     }else{
-                        res.json({
-                            code:90001,
-                            data:{
-                                Msg:'该用户已经激活账户'
-                            }
-                        })
+                        res.json({code:90001, data:{msg:'该用户已经激活账户'}})
                     }
                 } else {
                     resHandler(10011, res);

@@ -4,7 +4,6 @@
 const mongoose = require('mongoose');
 const Users = mongoose.model('Users');
 
-
 function My(req, res, next) {
     const condition = {id: req.user.id};
     const options = {password:0,_id:0};
@@ -13,20 +12,9 @@ function My(req, res, next) {
             unKnownError(res);
         } else {
             if (users) {
-                res.json({
-                    code: 10000,
-                    data: {
-                        Msg: '获取用户信息成功',
-                        users: users
-                    }
-                });
+                res.json({code: 10000, data: {msg: '获取用户信息成功', users: users}})
             } else {
-                res.json({
-                    code: 10010,
-                    data: {
-                        Msg: '用户不存在'
-                    }
-                })
+                res.json({code: 10010, data: {msg: '用户不存在'}})
             }
         }
     })

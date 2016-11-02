@@ -12,12 +12,7 @@ function addAdmin(req, res, next) {
         const email = req.body.email;
         Users.findOne({email: email}, function (err, user) {
             if (err) {
-                res.json({
-                    code: 10008,
-                    data: {
-                        Msg: '添加失败'
-                    }
-                })
+                res.json({code: 10008, data: {msg: '添加失败'}})
             } else {
                 if (user) {
                     resHandler(10008, res);
@@ -45,19 +40,9 @@ function addAdmin(req, res, next) {
                     const UserEntity = new Users(conditions);
                     UserEntity.save((err, user)=> {
                         if (err) {
-                            res.json({
-                                code: 10008,
-                                data: {
-                                    Msg: '添加失败'
-                                }
-                            })
+                            res.json({code: 10008, data: {msg: '添加失败'}})
                         } else {
-                            res.json({
-                                code: 10000,
-                                data: {
-                                    Msg: '添加管理员成功'
-                                }
-                            });
+                            res.json({code: 10000, data: {msg: '添加管理员成功'}});
                         }
                     })
                 }

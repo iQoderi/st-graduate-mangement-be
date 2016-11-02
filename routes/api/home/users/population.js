@@ -8,7 +8,6 @@ const Graduate = mongoose.model('graduate');
 function test(req, res) {
     const condition = {id: req.user.id};
     Graduate.find(condition)
-
         .exec((err, user)=> {
             res.json({
                 user: user

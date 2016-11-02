@@ -24,33 +24,15 @@ function login(req, res, next) {
                             const id = user.id;
                             const token = tokenCreator(id, expires);
                             if (user.isCompleteMsg) {
-                                res.json({
-                                    code: 10000,
-                                    data: {
-                                        Msg: '登录成功',
-                                        token: token
-                                    }
-                                });
+                                res.json({code: 10000, data: {msg: '登录成功', token: token}});
                             } else {
-                                res.json({
-                                    code: 90010,
-                                    data: {
-                                        Msg: '登录成功,请完善信息',
-                                        token: token
-                                    }
-                                });
+                                res.json({code: 90010, data: {msg: '登录成功,请完善信息', token: token}});
                             }
                         } else {
                             resHandler(10009, res);
                         }
                     }else{
-                        console.log(user.isBlock,3123);
-                        res.json({
-                            code:10014,
-                            data:{
-                                Msg:'账户已被冻结'
-                            }
-                        })
+                        res.json({code:10014, data:{msg:'账户已被冻结'}})
                     }
                 } else {
                     resHandler(10010, res);

@@ -10,34 +10,15 @@ const generateExcelRow = require('../../../../library/generateExcelRow');
 
 function exportStu(req, res, next) {
         const condition = {};
-        if (req.body.academy && req.body.academy !== '全部') {
-            condition.academy = req.body.academy;
-        }
-
-        if (req.body.role && req.body.role !== '全部') {
-            condition.role = req.body.role;
-        }
-
-        if (req.body.major) {
-            condition.major = req.body.major;
-        }
-
-        if (req.body.stuId) {
-            condition.stuId = req.body.stuId;
-        }
-
-        if (req.body.class) {
-            condition.class = req.body.class;
-        }
+        if (req.body.academy && req.body.academy !== '全部') {condition.academy = req.body.academy;}
+        if (req.body.role && req.body.role !== '全部') {condition.role = req.body.role;}
+        if (req.body.major) {condition.major = req.body.major;}
+        if (req.body.stuId) {condition.stuId = req.body.stuId;}
+        if (req.body.class) {condition.class = req.body.class;}
 
         graduateModel.find(condition).exec((err, user)=> {
             if (err) {
-                res.json({
-                    code: 90016,
-                    data: {
-                        msg: '导出毕业生信息失败'
-                    }
-                })
+                res.json({code: 90016, data: {msg: '导出毕业生信息失败'}})
             } else {
                 if (Array.isArray(user)) {
                     var conf = {};
@@ -50,12 +31,7 @@ function exportStu(req, res, next) {
                     res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
                     res.end(result, 'binary');
                 } else {
-                    res.json({
-                        code: 90016,
-                        data: {
-                            msg: '导出毕业生信息失败'
-                        }
-                    })
+                    res.json({code: 90016, data: {msg: '导出毕业生信息失败'}})
                 }
             }
         })

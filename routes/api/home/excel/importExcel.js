@@ -19,12 +19,7 @@ function uploadExcel(req,res,next) {
     form.maxFieldsSize = 5 * 1024 * 1024;   //文件大小
     form.parse(req, function (err, fields, files) {
         if (err) {
-            res.json({
-                code:90017,
-                data:{
-                    msg:'导入excel失败'
-                }
-            });
+            res.json({code:90017, data:{msg:'导入excel失败'}});
             return false;
         }
 
@@ -38,21 +33,14 @@ function uploadExcel(req,res,next) {
         var nameArray = filename.split('.');
         var type = nameArray[nameArray.length - 1];
         var name="";
-        nameArray.forEach((each)=>{
-            name+=each;
-        });
+        nameArray.forEach((each)=>{name+=each;});
 
         var excelName = name + uuid.v4() + '.' + type;
         var newPath = form.uploadDir + excelName;
         fs.renameSync(files.excel.path, newPath);  //重命名
         const workSheetsFromFile = xlsx.parse(fs.readFileSync(newPath));
         if(workSheetsFromFile.length<1){
-            res.json({
-                code:90017,
-                data:{
-                    msg:'上传失败'
-                }
-            })
+            res.json({code:90017, data:{msg:'上传失败'}})
         }else{
             const data=parseExcel(res,workSheetsFromFile[0].data);
             if(Array.isArray(data)){
@@ -61,33 +49,15 @@ function uploadExcel(req,res,next) {
                     data.forEach((each)=>{
                         var graduate = new graduateModel(each);
                         graduate.save((err)=>{
-                            if(err){
-                                reject(SUCC_COOUNT);
-                            }else{
-                                SUCC_COOUNT++;
-                            }
+                            if(err){reject(SUCC_COOUNT);}else{SUCC_COOUNT++;}
                         })
                     });
-
                     resolve(data.length);
                 });
-
                 importPromise.then((count)=>{
-                    res.json({
-                        code:10000,
-                        data:{
-                            msg:'上传成功',
-                            count:count
-                        }
-                    })
+                    res.json({code:10000, data:{msg:'上传成功', count:count}})
                 }).catch((count)=>{
-                    res.json({
-                        code:90018,
-                        data:{
-                            msg:'部分成功',
-                            count:count
-                        }
-                    });
+                    res.json({code:90018, data:{msg:'部分成功', count:count}});
                 });
             }
         }

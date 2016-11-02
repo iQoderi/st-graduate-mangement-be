@@ -27,67 +27,35 @@ function adminAddGraduate(req, res, next) {
             recruit: req.body.recruit || '无'
         };
     } catch (e) {
-        res.json({
-            code: -1,
-            data: {
-                msg: '未知错误'
-            }
-        })
+        res.json({code: -1, data: {msg: '未知错误'}})
     }
     var flag = true;
     for (var item in reqBody) {
-        if (!reqBody[item]) {
-            flag = false;
-            break;
-        }
+        if (!reqBody[item]) {flag = false;break;}
     }
 
     if (flag) {
         graduateModel.findOne({stuId: req.body.stuId}).exec((err, user)=> {
             if (err) {
-                res.json({
-                    code: 90011,
-                    data: {
-                        Msg: "添加毕业生失败"
-                    }
-                });
+                res.json({code: 90011, data: {msg: "添加毕业生失败"}})
             } else {
                 if (user) {
-                    res.json({
-                        code: 90012,
-                        data: {
-                            msg: '该毕业生已经存在'
-                        }
+                    res.json({code: 90012, data: {msg: '该毕业生已经存在'}
                     })
                 } else {
                     var graduate = new graduateModel(reqBody);
-                    graduate.save((err, info)=> {
+                    graduate.save((err)=> {
                         if (err) {
-                            res.json({
-                                code: 90011,
-                                data: {
-                                    Msg: "添加毕业生失败"
-                                }
-                            });
+                            res.json({code: 90011, data: {msg: "添加毕业生失败"}})
                         } else {
-                            res.json({
-                                code: 10000,
-                                data: {
-                                    Msg: '添加成功'
-                                }
-                            })
+                            res.json({code: 10000, data: {msg: '添加成功'}})
                         }
                     })
                 }
             }
         });
     } else {
-        res.json({
-            code: 10001,
-            data: {
-                msg: '请求格式错误'
-            }
-        })
+        res.json({code: 10001, data: {msg: '请求格式错误'}})
     }
 }
 

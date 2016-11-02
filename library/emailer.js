@@ -33,7 +33,6 @@ exports.sendMail = function(fromAddress, toAddress, subject, content, next){
     // send the email!
     smtpTransport.sendMail(mailOptions, function(error, response){
         if(error){
-            console.log('[ERROR] Message NOT sent: ', error);
             success = false;
         }
         else {

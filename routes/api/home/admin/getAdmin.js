@@ -23,7 +23,7 @@ function getAdmin(req, res, next) {
             res.json({
                 code: 90010,
                 data: {
-                    Msg: '获取列表失败'
+                    msg: '获取列表失败'
                 }
             })
         } else {
@@ -36,7 +36,7 @@ function getAdmin(req, res, next) {
                     res.json({
                         code: 90010,
                         data: {
-                            Msg: '获取列表失败'
+                            msg: '获取列表失败'
                         }
                     })
                 } else {
@@ -47,7 +47,7 @@ function getAdmin(req, res, next) {
                     res.json({
                         code: 10000,
                         data: {
-                            Msg: '获取成功',
+                            msg: '获取成功',
                             count: myCount,
                             pages: pages
                         }

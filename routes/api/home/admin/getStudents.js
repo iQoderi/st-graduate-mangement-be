@@ -18,7 +18,7 @@ function getStudents(req,res,next) {
     var myCount = 0;
     Users.count(condition).exec((err,count)=>{
         if(err){
-            res.json({code:-1,data:{Msg:"未知错误"}})
+            res.json({code:-1,data:{msg:"未知错误"}})
         }else{
             myCount=count;
             Users.find(condition, {students:1,isBlock:1,_id: 0}, {
@@ -26,13 +26,13 @@ function getStudents(req,res,next) {
                 limit: pageSize
             }).exec((err, data)=> {
                 if(err){
-                    res.json({code:-1,data:{Msg:"未知错误"}})
+                    res.json({code:-1,data:{msg:"未知错误"}})
                 }else{
                     var pages = [];
                     data.forEach((each)=> {each.students.isBlock=each.isBlock;pages.push(each.students);});
                     res.json({
                         code: 10000,
-                        data: {Msg: '获取成功', count: myCount, pages: pages}
+                        data: {msg: '获取成功', count: myCount, pages: pages}
                     });
                 }
             })

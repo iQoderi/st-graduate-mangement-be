@@ -8,13 +8,7 @@ const graduateModel = mongoose.model('graduate');
 function updateGraduate(req, res, next) {
     const condition = {id: req.user.id};
     if (req.user.role !== '学生') {
-        res.json({
-            code: 90010,
-            data: {
-                msg: "permission  denied"
-            }
-        });
-
+        res.json({code: 90010, data: {msg: "permission  denied"}});
         return;
     }
 
@@ -36,48 +30,24 @@ function updateGraduate(req, res, next) {
             recruit: req.body.recruit
         };
     } catch (e) {
-        res.json({
-            code: -1,
-            data: {
-                msg: '未知错误'
-            }
-        })
+        res.json({code: -1, data: {msg: '未知错误'}})
     }
-    var flag = true;
 
+    var flag = true;
     for (var item in data) {
-        if (!data[item]) {
-            flag = false;
-            break;
-        }
+        if (!data[item]) {flag = false;break;}
     }
 
     if (flag) {
         graduateModel.update(condition, data).exec((err, info)=> {
             if (err) {
-                res.json({
-                    code: 90011,
-                    data: {
-                        Msg: "更新毕业生信息失败"
-                    }
-                });
+                res.json({code: 90011, data: {msg: "更新毕业生信息失败"}});
             } else {
-                console.log(info);
-                res.json({
-                    code: 10000,
-                    data: {
-                        Msg: '添加成功'
-                    }
-                })
+                res.json({code: 10000, data: {msg: '添加成功'}})
             }
         })
     } else {
-        res.json({
-            code: 10001,
-            data: {
-                msg: '请求格式错误'
-            }
-        })
+        res.json({code: 10001, data: {msg: '请求格式错误'}})
     }
 }
 
