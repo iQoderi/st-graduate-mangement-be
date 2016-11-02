@@ -6,14 +6,6 @@ const graduate = require('../../../../models/Graduates');
 const graduateModel = mongoose.model('graduate');
 
 function rmGraduate(req, res, next) {
-    if (req.user.role != "管理员" &&req.user.role != "辅导员") {
-        res.json({
-            code: 10005,
-            data: {
-                msg: '您没有权限'
-            }
-        });
-    } else {
         const condition = {
             id: req.body.id
         };
@@ -52,7 +44,6 @@ function rmGraduate(req, res, next) {
                 }
             }
         })
-    }
 }
 
 module.exports = rmGraduate;

@@ -9,9 +9,6 @@ const resHandler = require('../../../../library/resHandler');
 
 
 function addAdmin(req, res, next) {
-    if (req.user.role === '学生') {
-        resHandler(10005, res);
-    } else {
         const email = req.body.email;
         Users.findOne({email: email}, function (err, user) {
             if (err) {
@@ -66,7 +63,6 @@ function addAdmin(req, res, next) {
                 }
             }
         });
-    }
 }
 
 module.exports = addAdmin;

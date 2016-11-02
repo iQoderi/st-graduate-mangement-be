@@ -6,15 +6,6 @@ const UserModel = require('../../../../models/Users');
 const Users = mongoose.model('Users');
 
 function changeAdminPass(req, res, next) {
-    if (req.user.role === '学生') {
-        res.json({
-            code: 10005,
-            data: {
-                Msg: '用户没有权限'
-            }
-        })
-    }
-
     if (req.query.id) {
         const id = req.query.id;
         const condition = {id: id};

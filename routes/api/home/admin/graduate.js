@@ -8,16 +8,6 @@ const graduateModel = mongoose.model('graduate');
 
 
 function adminAddGraduate(req, res, next) {
-    if (req.user.role !== '管理员' && req.user.role != '辅导员') {
-        res.json({
-            code: 90010,
-            data: {
-                msg: "permission  denied"
-            }
-        });
-        return false;
-    }
-
     try {
         var reqBody = {
             id: uuid.v1(),

@@ -6,15 +6,6 @@ const teacher = mongoose.model('Users');
 const resHandler = require('../../../../library/resHandler');
 
 function getAdmin(req, res, next) {
-    if (req.user.role === '学生') {
-        res.json({
-            code: 10005,
-            data: {
-                Msg: '用户没有权限'
-            }
-        })
-    }
-
     var start = 0;
     var pageSize = 10;
     if (req.query.pageSize) {

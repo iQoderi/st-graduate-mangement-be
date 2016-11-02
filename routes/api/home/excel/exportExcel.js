@@ -9,15 +9,6 @@ const ExcelTpl = require('../../../../library/excelTpl');
 const generateExcelRow = require('../../../../library/generateExcelRow');
 
 function exportStu(req, res, next) {
-    if (req.user.role !== '管理员' && req.user.role !== '辅导员') {
-        res.json({
-            code: 10005,
-            data: {
-                msg: '用户没有权限'
-            }
-        });
-        return false;
-    } else {
         const condition = {};
         if (req.body.academy && req.body.academy !== '全部') {
             condition.academy = req.body.academy;
@@ -68,7 +59,6 @@ function exportStu(req, res, next) {
                 }
             }
         })
-    }
 }
 
 module.exports = exportStu;

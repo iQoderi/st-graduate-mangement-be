@@ -8,14 +8,6 @@ const resHandler = require('../../../../library/resHandler');
 
 
 function rmAdmin(req, res, next) {
-    if (req.user.role === '学生') {
-        res.json({
-            code: 10005,
-            data: {
-                Msg: '用户没有权限'
-            }
-        })
-    }
     if (req.query.id) {
         const condition = {id: req.query.id};
         Users.remove(condition, function (err, info) {
