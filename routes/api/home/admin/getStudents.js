@@ -16,12 +16,12 @@ function getStudents(req,res,next) {
     if(req.query.academy){condition['students.academy']=req.query.academy;}
     if(req.query.major){condition['students.major']=req.query.major;}
     var myCount = 0;
-    Users.count({role:'学生'}).exec((err,count)=>{
+    Users.count(condition).exec((err,count)=>{
         if(err){
             res.json({code:-1,data:{Msg:"未知错误"}})
         }else{
             myCount=count;
-            Users.find(condition, {students:1, _id: 0}, {
+            Users.find(condition, {students:1,isBlock:1,_id: 0}, {
                 skip: start,
                 limit: pageSize
             }).exec((err, data)=> {
@@ -29,7 +29,7 @@ function getStudents(req,res,next) {
                     res.json({code:-1,data:{Msg:"未知错误"}})
                 }else{
                     var pages = [];
-                    data.forEach((each)=> {pages.push(each.students);});
+                    data.forEach((each)=> {each.students.isBlock=each.isBlock;pages.push(each.students);});
                     res.json({
                         code: 10000,
                         data: {Msg: '获取成功', count: myCount, pages: pages}

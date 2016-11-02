@@ -4,7 +4,7 @@
 function hasRole(role) {
     return function (req,res,next) {
         if(req.user.role===role){
-            res.json({code:10005,data:{Msg:"用户没有权限"}});
+            res.json({code:10005,data:{msg:"用户没有权限"}});
         }else{
             next();
         }
