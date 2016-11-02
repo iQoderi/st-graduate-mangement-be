@@ -3,8 +3,6 @@
  */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const graduate=require('./Graduates');
-const abroad=require('./abroadStudent');
 
 const UserSchema = new Schema({
     id: {
@@ -25,6 +23,10 @@ const UserSchema = new Schema({
         type: String,
         default: '学生'
     },
+    isBlock:{               //账户是否被冻结
+        type:Boolean,
+        default:false
+    },
     isActive: {
         type: Boolean,
         default: false
@@ -35,14 +37,6 @@ const UserSchema = new Schema({
     },
     students: Schema.Types.Mixed,
     teacher: Schema.Types.Mixed,
-    graduate:{
-        type:String,
-        ref:'graduate'
-    },
-    aborad:{
-        type:String,
-        ref:'abroad'
-    }
 });
 
 

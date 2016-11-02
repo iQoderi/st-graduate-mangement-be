@@ -13,7 +13,21 @@ const mongoose = require('mongoose');
 const app = express();
 
 const host = '123.206.16.40';
-mongoose.connect(`mongodb://${host}:27017/neuqst-graduate-mange`);
+const dbOptions={
+  user:'root',
+  pass:'qoder2016'
+};
+
+mongoose.connect(`mongodb://${host}:27017/neuqst-graduate-mange`,dbOptions);
+mongoose.connection.on('connected', function () {
+     console.log('Mongoose connected to ');
+});
+mongoose.connection.on('error',function (err) {
+      console.log('Mongoose connection error: ' + err);
+});
+mongoose.connection.on('disconnected', function () {
+      console.log('Mongoose disconnected');
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
