@@ -7,7 +7,6 @@ const moment = require('moment');
 const tokenCreator = require('../../../library/tokenCreator');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
-const checkBlock=require('../../../library/checkBlock');    //检查账户是否被冻结
 const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
 
