@@ -10,12 +10,13 @@ const routes = require('./routes/index');
 const users = require('./routes/api/auth');
 const home = require('./routes/api/home');
 const mongoose = require('mongoose');
+const config=require('./config');
 const app = express();
 
-const host = '123.206.16.40';
+const host = config.mongo.host;
 const dbOptions={
-  user:'root',
-  pass:'qoder2016'
+  user:config.mongo.user,
+  pass:config.mongo.pass
 };
 
 mongoose.connect(`mongodb://${host}:27017/neuqst-graduate-mange`,dbOptions);
