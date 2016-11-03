@@ -5,7 +5,7 @@ const MD5 = require('md5');
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 const userModel = require('../models/Users');
-const Users = mongoose.model('User');
+const Users = mongoose.model('Users');
 
 function jwt(createAt, expireIn, userId) {
     var token = {
