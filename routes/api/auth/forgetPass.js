@@ -3,7 +3,6 @@
  */
 const mongoose = require('mongoose');
 const moment = require('moment');
-const tokenCreator = require('../../../library/tokenCreator');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
 const emailSender=require('../../../library/emailSender');
@@ -11,6 +10,8 @@ const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
 const resetPassTpl=require('../../../template/resetPassTpl');
 const localhost=require('../../../config/localhost');
+const jwt=require('../../../library/token');
+
 
 
 function forgetPass(req, res) {
@@ -22,11 +23,11 @@ function forgetPass(req, res) {
             } else {
                 if (user) {
                     const email=req.body.email;
-                    const expires = moment().add(7,'days').valueOf();
+                    const expires = moment().add(2,'days').valueOf();
                     const id=user.id;
-                    const token = tokenCreator(id,expires);
+                    const token = jwt(Date.now(),expires,id);
                     const subject='东北大学秦皇岛分校数学与统计学院大学生就业择业平台';
-                    const html=resetPassTpl.replace(/authLink/g,localhost+'/users/resetPass/confirmmail?Token='+token+'&email='+email+'&subject='+encodeURI(subject));
+                    const html=resetPassTpl.replace(/authLink/g,localhost+'/users/resetPass/confirmmail?Token='+token.token+'&email='+email+'&subject='+encodeURI(subject));
                     const mailOptions = {
                         from: 'neuqstbysgl@163.com',
                         to: email,

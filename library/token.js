@@ -13,7 +13,6 @@ function jwt(createAt, expireIn, userId) {
         expiresIn: expireIn,
         token: MD5(uuid.v4() + userId)
     };
-    console.log(token);
     const condition = {id: userId};
     const update = {$set: {token: token}};
     Users.update(condition, update).exec((err,info)=>{});

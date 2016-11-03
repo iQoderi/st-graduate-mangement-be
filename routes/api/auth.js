@@ -24,7 +24,7 @@ router.post('/register', hashPassword, register);   //注册
 router.post('/login', hashPassword, login);         //登录
 router.post('/forgetPass', forgetPass);   //忘记密码
 router.post('/reSendEmail', reSendEmail);   //重新发送激活邮件
-router.post('/passNew', hashPassword, passNew);   //通过邮件认证重置密码
+router.post('/passNew', checkToken, passNew);   //通过邮件认证重置密码
 router.post('/BaseMsg', checkToken, BaseMsg);   //完整个人基本信息
 
 

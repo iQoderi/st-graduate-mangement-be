@@ -7,12 +7,12 @@ const Users = mongoose.model('Users');
 const localhost = require('../../../config/localhost');
 const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
+const hash=require('../../../library/hash');
 
 function passNew(req, res, next) {
     if (req.body.password && req.query.id) {
-        const condition = {id: req.query.id};
-        const password = req.body.password;
-        console.log(password);
+        const condition = {"token.token": req.query.id};
+        const password =hash(req.user.email,req.body.password);
         const update = {$set: {password: password}};
         Users.update(condition, update, function (err, user) {
             if (err) {

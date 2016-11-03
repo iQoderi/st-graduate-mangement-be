@@ -9,8 +9,7 @@ function checkToken(req, res, next) {
     if (req.method === 'OPTIONS') {
         next();
     }
-
-    var token = req.headers['token'] || req.query.Token || req.query.token;
+    var token = req.headers['token'] || req.query.Token || req.query.token||req.query.id;
     if (token) {
         const condition = {"token.token": token};
         Users.findOne(condition).exec((err, user)=> {
