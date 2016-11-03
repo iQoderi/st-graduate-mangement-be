@@ -5,9 +5,11 @@
 const mongoose = require('mongoose');
 const UserModel = require('../../../../models/Users');
 const Users = mongoose.model('Users');
+const hash=require('../../../../library/hash');
 
 
 function changePass(req, res, next) {
+    req.body.oldPassword=hash(req.user.email,req.body.oldPassword);
     if (req.body.oldPassword && req.body.password) {
         const condition = {id: req.user.id, password: req.body.oldPassword};
         const update = {$set: {password: req.body.password}};

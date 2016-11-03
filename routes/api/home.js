@@ -7,6 +7,7 @@ const router = express.Router();
 const checkToken = require('../../middlewares/checkToken');
 const checkBlock=require('../../middlewares/checkBlock');   //检查账户是否被冻结
 const hasRole=require('../../middlewares/hasRole');  //check role
+const hashPassword=require('../../middlewares/hashPassword');   //hash password
 
 const My = require('./home/users/my');
 const editMyMsg = require('./home/users/my.put');
@@ -41,7 +42,7 @@ router.put('/changePass', checkBlock,changePass);      //修改账号密码
 router.get('/admin',checkBlock,hasRole('学生'),getAdmin);      //获取管理员列表
 router.put('/admin',checkBlock,hasRole('学生'),modifyAdmin);      //编辑管理员
 router.delete('/admin',checkBlock,hasRole('学生'),rmAdmin);      //删除管理员
-router.post('/admin',checkBlock,hasRole('学生'),addAdmin);      //添加管理员
+router.post('/admin',checkBlock,hasRole('学生'),hashPassword,addAdmin);      //添加管理员
 router.put('/changeAdminPass',checkBlock,hasRole('学生'),changeAdminPass);     //修改管理员密码
 router.get('/getStudents',checkBlock,hasRole('学生'),getStudents);     //获取学生列表
 router.post('/blockAccount',checkBlock,hasRole('学生'),blockAccount);    //冻结解冻用户账户
@@ -53,8 +54,9 @@ router.post('/uploadExcel',checkBlock,hasRole('学生'),uploadExcel);           
 
 /*毕业生*/
 router.delete('/admin/graduate',checkBlock,hasRole('学生'),rmGraduate);              //删除毕业生
-router.post('/searchGraduate',checkBlock, searchGraduate);      //查找毕业生
 router.post('/admin/graduate',hasRole('学生'),adminAddGraduate);    //管理员添加毕业生信息
+router.post('/searchGraduate',checkBlock, searchGraduate);      //查找毕业生
+
 
 router.get('/graduate',checkBlock,getGraduateMsg);             //获取毕业生信息
 router.put('/graduate',checkBlock,modifyGraduate);             //修改毕业生信息

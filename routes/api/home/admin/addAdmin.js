@@ -36,9 +36,8 @@ function addAdmin(req, res, next) {
                         isActive: true,
                         isCompleteMsg: true
                     };
-                    
                     const UserEntity = new Users(conditions);
-                    UserEntity.save((err, user)=> {
+                    UserEntity.save((err)=> {
                         if (err) {
                             res.json({code: 10008, data: {msg: '添加失败'}})
                         } else {

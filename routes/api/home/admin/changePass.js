@@ -4,11 +4,13 @@
 const mongoose = require('mongoose');
 const UserModel = require('../../../../models/Users');
 const Users = mongoose.model('Users');
+const hash=require('../../../../library/hash');
 
 function changeAdminPass(req, res, next) {
     if (req.query.id) {
         const id = req.query.id;
         const condition = {id: id};
+        req.body.password=hash(req.user.email,req.body.password);
         const update = {$set: {password:req.body.password}};
         Users.update(condition, update, function (err, info) {
             if (err) {

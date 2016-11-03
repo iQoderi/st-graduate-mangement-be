@@ -6,6 +6,7 @@ const Users = mongoose.model('Users');
 
 function My(req, res, next) {
     const condition = {id: req.user.id};
+    console.log(req.user,3123123213);
     const options = {password:0,_id:0};
     Users.findOne(condition, options).exec((err, users)=> {
         if (err) {

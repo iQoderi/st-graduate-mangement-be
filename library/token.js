@@ -10,12 +10,14 @@ const Users = mongoose.model('Users');
 function jwt(createAt, expireIn, userId) {
     var token = {
         createAt: createAt,
-        expireIn: expireIn,
+        expiresIn: expireIn,
         token: MD5(uuid.v4() + userId)
     };
+    console.log(token);
     const condition = {id: userId};
     const update = {$set: {token: token}};
-    Users.update(condition, update)
+    Users.update(condition, update).exec((err,info)=>{});
+    return token;
 }
 
 module.exports = jwt;
