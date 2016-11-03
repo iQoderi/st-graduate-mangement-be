@@ -23,9 +23,9 @@ const UserSchema = new Schema({
         type: String,
         default: '学生'
     },
-    isBlock:{               //账户是否被冻结
-        type:Boolean,
-        default:false
+    isBlock: {               //账户是否被冻结
+        type: Boolean,
+        default: false
     },
     isActive: {
         type: Boolean,
@@ -34,6 +34,11 @@ const UserSchema = new Schema({
     isCompleteMsg: {
         type: Boolean,
         default: false
+    },
+    token: {
+        createAt: String,
+        token: String,
+        expiresIn: String
     },
     students: Schema.Types.Mixed,
     teacher: Schema.Types.Mixed,

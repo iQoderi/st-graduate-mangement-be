@@ -1,6 +1,9 @@
 /**
  * Created by qoder on 16-8-12.
  */
+/**
+ * Created by qoder on 16-8-12.
+ */
 const nodeExcel = require('excel-export');
 const mongoose = require('mongoose');
 const graduate = require('../../../../models/Graduates');
@@ -10,11 +13,11 @@ const generateExcelRow = require('../../../../library/generateExcelRow');
 
 function exportStu(req, res, next) {
         const condition = {};
-        if (req.body.academy && req.body.academy !== '全部') {condition.academy = req.body.academy;}
-        if (req.body.role && req.body.role !== '全部') {condition.role = req.body.role;}
-        if (req.body.major) {condition.major = req.body.major;}
-        if (req.body.stuId) {condition.stuId = req.body.stuId;}
-        if (req.body.class) {condition.class = req.body.class;}
+        if (req.query.academy && req.query.academy !== '全部') {condition.academy = req.query.academy;}
+        if (req.query.role && req.query.role !== '全部') {condition.role = req.query.role;}
+        if (req.query.major) {condition.major = req.query.major;}
+        if (req.query.stuId) {condition.stuId = req.query.stuId;}
+        if (req.query.class) {condition.class = req.query.class;}
 
         graduateModel.find(condition).exec((err, user)=> {
             if (err) {
@@ -28,7 +31,7 @@ function exportStu(req, res, next) {
                     conf.rows = generateExcelRow(user);
                     var result = nodeExcel.execute(conf);
                     res.setHeader('Content-Type', 'application/vnd.openxmlformats');
-                    res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+                    res.setHeader("Content-Disposition", "attachment; filename=" + "NEUQGraduate.xlsx");
                     res.end(result, 'binary');
                 } else {
                     res.json({code: 90016, data: {msg: '导出毕业生信息失败'}})
@@ -38,5 +41,6 @@ function exportStu(req, res, next) {
 }
 
 module.exports = exportStu;
+
 
 

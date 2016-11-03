@@ -13,7 +13,7 @@ const resetPassTpl=require('../../../template/resetPassTpl');
 const localhost=require('../../../config/localhost');
 
 
-function forgetPass(req, res, next) {
+function forgetPass(req, res) {
     if (req.body.email) {
         const condition = {email: req.body.email};
         Users.findOne(condition, function (err, user) {

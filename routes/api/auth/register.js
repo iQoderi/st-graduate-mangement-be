@@ -10,8 +10,9 @@ const emailSender = require('../../../library/emailSender');
 const regHtml = require('../../../template/mailtpl');
 const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
+const MD5=require('md5');
 
-function register(req, res, next) {
+function register(req, res) {
     if (req.body.email && req.body.password) {
         const email = req.body.email;
         Users.findOne({email: email}, function (err, user) {
@@ -31,7 +32,7 @@ function register(req, res, next) {
                         text: '欢迎使用东北大学秦皇岛分校大学生就业择业平台',
                         html: html
                     };
-                    Users.create(req.body, function (err, users) {
+                    Users.create(req.body, function (err) {
                         if (err) {
                             unKnownError(res);
                         } else {

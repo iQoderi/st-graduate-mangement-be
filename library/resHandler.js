@@ -8,7 +8,7 @@ function resJson(code, res, msg) {
     res.json({
         code: code,
         data: {
-            Msg: msg
+            msg: msg
         }
     })
 }

@@ -47,8 +47,8 @@ router.get('/getStudents',checkBlock,hasRole('学生'),getStudents);     //获�
 router.post('/blockAccount',checkBlock,hasRole('学生'),blockAccount);    //冻结解冻用户账户
 
 /*excel*/
-router.get('/excel',checkBlock,hasRole('学生'),getExcel);                      //获取excel
-router.post('/excel',checkBlock,hasRole('学生'),exportStu);                      //获取excel
+//router.get('/excel',checkBlock,hasRole('学生'),getExcel);                      //获取excel
+router.get('/excel',checkBlock,hasRole('学生'),exportStu);                      //获取excel
 router.post('/uploadExcel',checkBlock,hasRole('学生'),uploadExcel);               //上传excel
 
 /*毕业生*/

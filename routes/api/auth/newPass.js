@@ -5,15 +5,14 @@ const mongoose = require('mongoose');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
 const localhost = require('../../../config/localhost');
-const emailSender = require('../../../library/emailSender');
 const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
-
 
 function passNew(req, res, next) {
     if (req.body.password && req.query.id) {
         const condition = {id: req.query.id};
         const password = req.body.password;
+        console.log(password);
         const update = {$set: {password: password}};
         Users.update(condition, update, function (err, user) {
             if (err) {

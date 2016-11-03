@@ -17,7 +17,7 @@
     <div class="link">
         <span>您已经成功激活您的账户，可以点击以下页面返回登录界面登录您的账户:</span>
         <span>激活成功:<span id="time" style="display: inline">5</span>秒后返回重置密码页面,若不能返回,点击下方按钮直接返回</span></span>
-        <div><p><a href="http://neuqst.qoder.cn/#/auth/login">返回登录</a></p></div>
+        <div><p><a id="goResetPass" href="http://neuqst.qoder.cn/#/auth/login">返回登录</a></p></div>
     </div>
 </div>
 <div class="footer">
@@ -28,8 +28,7 @@
         var timer = null;
         var count = 5;
         var baseUrl = 'http://neuqst.qoder.cn';
-        var data = document.getElementById('data').innerHTML;
-        var targetUrl = baseUrl + '?id=' + data + '#/auth/login';
+        var targetUrl = baseUrl + '/#/auth/login';
         var time = document.getElementById('time');
         var goResetPass = document.getElementById('goResetPass');
         goResetPass.setAttribute('href', targetUrl);

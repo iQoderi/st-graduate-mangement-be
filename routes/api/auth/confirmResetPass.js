@@ -4,8 +4,6 @@
 const mongoose = require('mongoose');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
-const unKnownError = require('../../../library/unknownError');
-const resHandler = require('../../../library/resHandler');
 
 
 //确认忘记密码重新设置密码邮件

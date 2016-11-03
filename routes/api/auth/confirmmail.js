@@ -5,12 +5,9 @@
 const mongoose = require('mongoose');
 const UserModel = require('../../../models/Users');
 const Users = mongoose.model('Users');
-const unKnownError = require('../../../library/unknownError');
-const resHandler = require('../../../library/resHandler');
-
 
 //确认注册邮件
-function confirmEmail(req, res, next) {
+function confirmEmail(req, res) {
     const condition = {id: req.query.id};
     const update = {$set: {isActive: true}};
     Users.update(condition, update, function (err) {
