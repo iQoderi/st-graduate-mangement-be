@@ -10,6 +10,7 @@ const emailSender = require('../../../library/emailSender');
 const regHtml = require('../../../template/mailtpl');
 const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
+const jwt=require('../../../library/token');
 
 function register(req, res) {
     if (req.body.email && req.body.password) {
@@ -21,6 +22,7 @@ function register(req, res) {
                 if (user) {
                     resHandler(10008, res);
                 } else {
+                    req.body.id = uuid.v1();
                     const subject = '东北大学秦皇岛分校数学与统计学院大学生就业择业平台';
                     const html = regHtml.replace(/authLink/g, localhost + '/users/register/confirmmail?id=' + req.body.id + '&email=' + email + '&subject=' + encodeURI(subject));
                     const mailOptions = {

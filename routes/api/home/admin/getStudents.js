@@ -15,6 +15,7 @@ function getStudents(req,res,next) {
     if(req.query.isBlock){condition.isBlock=req.query.isBlock;}
     if(req.query.academy){condition['students.academy']=req.query.academy;}
     if(req.query.major){condition['students.major']=req.query.major;}
+    if(req.query.class){condition['students.class']=req.query.class;}
     var myCount = 0;
     Users.count(condition).exec((err,count)=>{
         if(err){
