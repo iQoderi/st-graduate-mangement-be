@@ -22,6 +22,7 @@ function reSendEmail(req, res, next) {
                 if (user) {
                     if(!user.isActive){
                         const  email=req.body.email;
+			console.log(user);
                         const subject = '东北大学秦皇岛分校数学与统计学院大学生就业择业平台';
                         const html = regHtml.replace(/authLink/g, localhost + '/users/register/confirmmail?id=' + user.id + '&email=' + email + '&subject=' + encodeURI(subject));
                         const mailOptions = {

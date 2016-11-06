@@ -13,6 +13,7 @@ function getGraduateMsg(req, res, next) {
         if (req.user.students.role === '毕业生') {
             const condition = {id: req.user.id};
             graduateModel.findOne(condition).exec((err, graduate)=> {
+console.log(graduate);
                 if (err) {
                     res.json({code: -1, data: {msg: '未知错误'}})
                 } else {
