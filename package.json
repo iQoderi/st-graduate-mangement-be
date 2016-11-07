@@ -12,6 +12,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "express-session": "^1.14.2",
     "formidable": "^1.0.17",
     "fs": "0.0.2",
     "http": "0.0.0",

@@ -14,14 +14,16 @@ const confirmResetPass = require('./auth/confirmResetPass');
 const reSendEmail = require('./auth/reSendEmail');
 const passNew = require('./auth/newPass');
 const BaseMsg = require('./users/BaseMsg');
+const getVerifyCode = require('./auth/getVerifyCode');
 const checkToken = require('../../middlewares/checkToken');
 const hashPassword = require('../../middlewares/hashPassword');
+const checkVerifyCode = require('../../middlewares/checkVerifyCode');
 
 router.get('/register/confirmmail', confirmEmail);    //激活账号
 router.get('/resetPass/confirmmail', checkToken, confirmResetPass);   //确认重置密码邮件
-
+router.get('/verifyCode', getVerifyCode);    //获取图形验证码
 router.post('/register', hashPassword, register);   //注册
-router.post('/login', hashPassword, login);         //登录
+router.post('/login', checkVerifyCode, hashPassword, login);         //登录
 router.post('/forgetPass', forgetPass);   //忘记密码
 router.post('/reSendEmail', reSendEmail);   //重新发送激活邮件
 router.post('/passNew', checkToken, passNew);   //通过邮件认证重置密码

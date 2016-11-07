@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ccap=require('ccap')();
+const ccap = require('ccap')();
 
 
 // var captcha2 = ccap(width, height, offset);
@@ -27,13 +27,12 @@ const ccap=require('ccap')();
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    console.log(req.url);
-    var ary=ccap.get();
-    var text=ary[0];
-    var buffer=ary[1];
-    console.log(text);
-    res.end(buffer);
+router.get('/', function (req, res, next) {
+    var ary = ccap.get();
+    var text = ary[0];
+    var buffer = ary[1];
+    req.session.verifyCode = text;
+    res.send(text);
 });
 
 

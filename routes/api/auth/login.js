@@ -10,7 +10,6 @@ const Users = mongoose.model('Users');
 const unKnownError = require('../../../library/unknownError');
 const resHandler = require('../../../library/resHandler');
 
-
 function login(req, res, next) {
     if (req.body.email && req.body.password) {
         Users.findOne(req.body).exec((err, user)=> {
