@@ -2,7 +2,7 @@
  * Created by qoder on 16-11-7.
  */
 "use strict";
-const ccpa = require('ccap')();
+const ccap = require('ccap')();
 
 //生成验证码
 module.exports = ()=> {

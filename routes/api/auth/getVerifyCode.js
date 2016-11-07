@@ -12,5 +12,6 @@ module.exports = (req, res)=> {
     var text = verifyCode.text;
     var buffer = verifyCode.buffer;
     req.session.verifyCode = text;
+    console.log(req.session);
     res.end(buffer);
 }

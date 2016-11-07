@@ -1,4 +1,5 @@
 const express = require('express');
+const tokenCreator=require('../library/tokenCreator');
 const router = express.Router();
 const ccap = require('ccap')();
 
@@ -25,15 +26,14 @@ const ccap = require('ccap')();
 //
 // });
 
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
     var ary = ccap.get();
     var text = ary[0];
     var buffer = ary[1];
-    req.session.verifyCode = text;
-    res.send(text);
+    const expires=Date.now()+1000*60*10;   //设置图形验证码10分钟过期
+    res.cookie['verifyCode']=tokenCreator(text,expires);
+    res.end(buffer);
 });
-
 
 module.exports = router;
